@@ -29,6 +29,7 @@ public class loginTest {
     assertEquals("https://app.organizze.com.br/inicio", pagina.getDriver().getCurrentUrl());
   }
 
+  //erro: //*[@id="login-form"]/div[1]/span
   @After
   public void tearDown() throws Exception {
 	  pagina.getDriver().quit();

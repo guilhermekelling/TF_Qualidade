@@ -10,7 +10,7 @@ public class PaginaLogin {
 	
 	public PaginaLogin(String user_email, String user_password){
 		this.user_email = user_email;
-		this.user_password = user_email;
+		this.user_password = user_password;
 	}
 		
 	public String getUser_email() {
@@ -32,9 +32,9 @@ public class PaginaLogin {
 	
 	public void executar(WebDriver driver){
 		driver.findElement(By.id("user_email")).clear();
-	    driver.findElement(By.id("user_email")).sendKeys("guilhermekelling@gmail.com");	
+	    driver.findElement(By.id("user_email")).sendKeys(user_email);	
 	    driver.findElement(By.id("user_password")).clear();
-	    driver.findElement(By.id("user_password")).sendKeys("123@Trabalho");
+	    driver.findElement(By.id("user_password")).sendKeys(user_password);
 	    driver.findElement(By.cssSelector("button.button.button-green")).click();	    
 	}
 
