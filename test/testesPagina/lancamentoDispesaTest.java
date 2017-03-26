@@ -29,7 +29,7 @@ public class lancamentoDispesaTest {
     driver.findElement(By.id("user_email")).clear();
     driver.findElement(By.id("user_password")).clear();
     driver.findElement(By.id("user_email")).sendKeys("guilhermekelling@gmail.com");    
-    driver.findElement(By.id("user_password")).sendKeys("123@Trabalho");
+    driver.findElement(By.id("user_password")).sendKeys("1234@Trabalho");
     driver.findElement(By.cssSelector("button.button.button-green")).click();
     Thread.sleep(1000);
     driver.get(baseUrl + "/919518/inicio");    
