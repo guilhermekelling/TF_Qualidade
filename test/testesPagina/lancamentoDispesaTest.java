@@ -6,6 +6,7 @@ import org.junit.*;
 import static org.junit.Assert.*;
 import static org.hamcrest.CoreMatchers.*;
 import org.openqa.selenium.*;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Select;
 
@@ -17,9 +18,9 @@ public class lancamentoDispesaTest {
 
   @Before
   public void setUp() throws Exception {
-	System.setProperty("webdriver.firefox.marionette","C:\\plugin\\geckodriver.exe");
+	System.setProperty("webdriver.chrome.driver", "./chromedriver.exe");
     baseUrl = "https://app.organizze.com.br";
-    driver = new FirefoxDriver();    
+    driver = new ChromeDriver();  
     driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
   }
 
@@ -29,11 +30,10 @@ public class lancamentoDispesaTest {
     driver.findElement(By.id("user_email")).clear();
     driver.findElement(By.id("user_password")).clear();
     driver.findElement(By.id("user_email")).sendKeys("guilhermekelling@gmail.com");    
-    driver.findElement(By.id("user_password")).sendKeys("1234@Trabalho");
+    driver.findElement(By.id("user_password")).sendKeys("123@Trabalho");
     driver.findElement(By.cssSelector("button.button.button-green")).click();
-    Thread.sleep(1000);
-    driver.get(baseUrl + "/919518/inicio");    
-
+   /* Thread.sleep(1000);
+    driver.get(baseUrl + "/919518/inicio");  
     driver.findElement(By.xpath("//*[@id=\"transactions-add-button-bar\"]/div/div/ul/li[1]/a"));
     driver.findElement(By.id("transaction_description")).clear();
     driver.findElement(By.id("transaction_description")).sendKeys("Bala");
@@ -45,7 +45,7 @@ public class lancamentoDispesaTest {
     driver.findElement(By.id("transaction_category")).sendKeys("");
     driver.findElement(By.linkText("Alimentação")).click();
     driver.findElement(By.cssSelector("div.action-bar > button.button.button-blue")).click();
-  }
+  */}
 
   @After
   public void tearDown() throws Exception {
