@@ -6,6 +6,12 @@ addons:
       - google-chrome
     packages:
       - google-chrome-stable
+before_script:
+  # google chrome standalone driver
+  - wget http://chromedriver.storage.googleapis.com/2.10/chromedriver_linux64.zip
+  - unzip chromedriver_linux64.zip
+  - sudo mv chromedriver /usr/local/bin
+  - sudo chmod a+x /usr/local/bin/chromedriver
 language: java
 jdk:
  - oraclejdk8
@@ -14,3 +20,5 @@ notifications:
     recipients:
       - guilhermekelling@gmail.com
     on_success: always
+    
+    
