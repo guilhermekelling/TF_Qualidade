@@ -1,6 +1,11 @@
 language: java
 script:
- - mvn test
+ - mvn test -B
  - mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
 jdk:
  - oraclejdk8
+notifications:
+  email:
+    recipients:
+      - guilhermekelling@gmail.com
+    on_success: always
