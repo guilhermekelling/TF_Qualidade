@@ -20,7 +20,7 @@ public class Driver {
 	}
 
 	public Driver() {
-		System.setProperty("webdriver.chrome.driver", "./chromedriver.exe");	
+		System.setProperty("webdriver.chrome.driver", "chromedriver.exe");	
 		this.driver = new ChromeDriver();
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 	}
