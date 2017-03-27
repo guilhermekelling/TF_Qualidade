@@ -22,13 +22,8 @@ public class Driver {
 
 	public Driver() {
 		System.setProperty("webdriver.chrome.driver", "/usr/local/bin/chromedriver");	
-		//System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
-		ChromeOptions options = new ChromeOptions();
-        options.addArguments("--no-sandbox");
-        options.addArguments("no-default-browser-check");
-        options.addArguments("no-first-run");
-        options.addArguments("disable-default-apps");  
-		this.driver = new ChromeDriver(options);
+		//System.setProperty("webdriver.chrome.driver", "chromedriver.exe"); 
+		this.driver = new ChromeDriver();
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 	}
 	
