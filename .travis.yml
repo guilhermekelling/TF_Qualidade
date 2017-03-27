@@ -17,7 +17,7 @@ addons:
     # Install the browsers
     - sudo apt-get install -y google-chrome-stable   
     # Abrir navegadorr
-    google-chrome-stable
+    - google-chrome-stable
 before_script:
   # google chrome standalone driver
   - wget http://chromedriver.storage.googleapis.com/2.10/chromedriver_linux64.zip
