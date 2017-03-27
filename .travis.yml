@@ -16,7 +16,7 @@ addons:
     - sudo apt-get update -qq
     # Install the browsers
     - sudo apt-get install -y google-chrome-stable   
-    # Abrir navegador
+    # Abrir navegadorr
     ping www.terra.com.br -c 3
     google-chrome-stable
 before_script:
