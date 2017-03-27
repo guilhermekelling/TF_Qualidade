@@ -6,7 +6,7 @@ import org.junit.Test;
  
 public class meuTest {
  
-	  private int x = 1;
+	  private int x = 2;
 	  private int y = 1;
 	  
 	@Test public void metodo() {
