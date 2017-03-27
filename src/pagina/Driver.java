@@ -25,6 +25,9 @@ public class Driver {
 		//System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
 		ChromeOptions options = new ChromeOptions();
         options.addArguments("--no-sandbox");
+        options.addArguments("no-default-browser-check");
+        options.addArguments("no-first-run");
+        options.addArguments("disable-default-apps");  
 		this.driver = new ChromeDriver(options);
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 	}
