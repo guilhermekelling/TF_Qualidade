@@ -7,47 +7,12 @@ addons:
       - google-chrome
     packages:
       - google-chrome-stable
-cache:
-  directories:
-    - chrome
-install:
-    # Add repos
-    - sudo apt-add-repository "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main"
-    # Remove "deb-src" repos added from apt-add-repository, because it doesn't exist online
-    - sudo sed -i s/deb-src.*google.*//g /etc/apt/sources.list
-    # Add apt-keys for checking the packages
-    - wget -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
-    # Update
-    - sudo apt-get update -qq
-    # Install the browsers
-    - sudo apt-get install -y google-chrome-stable   
 before_script:
   # google chrome standalone driver
   - wget http://chromedriver.storage.googleapis.com/2.10/chromedriver_linux64.zip
   - unzip chromedriver_linux64.zip
   - sudo mv chromedriver /usr/local/bin
-  - sudo chmod a+x /usr/local/bin/chromedriver 
-  # fetch and extract Chrome if not cached
-  - if [ ! -x chrome/opt/google/chrome/chrome ]; then
-        wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb &&
-        dpkg -x google-chrome-stable_current_amd64.deb chrome &&
-        rm -f google-chrome-stable_current_amd64.deb
-    else
-        echo 'Using cached Google Chrome';
-    fi
-  # dump the current versions
-  - chrome/opt/google/chrome/chrome --version
-  - npm list
-  # prepare the headless environment
-  - export DISPLAY=:99.0
-  - sh -e /etc/init.d/xvfb start && sleep 5
-  # start a fresh new Chrome instance
-  - chrome/opt/google/chrome/chrome
-        --user-data-dir=$(mktemp -d)
-        --no-sandbox --no-first-run --disable-extensions --remote-debugging-port=9222
-        about:blank &
-  # wait for Chrome to start up
-  - while ! curl http://localhost:9222 >/dev/null; do sleep 1; done
+  - sudo chmod a+x /usr/local/bin/chromedriver
 jdk:
  - oraclejdk8
 notifications:
