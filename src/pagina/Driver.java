@@ -4,6 +4,7 @@ import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 
 public class Driver {
 	private WebDriver driver;
@@ -22,7 +23,9 @@ public class Driver {
 	public Driver() {
 		System.setProperty("webdriver.chrome.driver", "/usr/local/bin/chromedriver");	
 		//System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
-		this.driver = new ChromeDriver();
+		ChromeOptions options = new ChromeOptions();
+        options.addArguments("--no-sandbox");
+		this.driver = new ChromeDriver(options);
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 	}
 	
