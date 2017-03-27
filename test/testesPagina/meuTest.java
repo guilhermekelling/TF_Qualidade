@@ -4,7 +4,7 @@ import static org.junit.Assert.*;
  
 import org.junit.Test;
  
-public class atest {
+public class meuTest {
  
 	  private int x = 1;
 	  private int y = 1;
