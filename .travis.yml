@@ -1,28 +1,46 @@
+sudo: true
+
 language: java
-sudo: required
-dist: trusty
-addons:
-  apt:
-    sources:
-      - google-chrome
-    packages:
-      - google-chrome-stable
-before_script:
-  # google chrome standalone driver
-  - wget http://chromedriver.storage.googleapis.com/2.10/chromedriver_linux64.zip
-  - unzip chromedriver_linux64.zip
-  - sudo mv chromedriver /usr/local/bin
-  - sudo chmod a+x /usr/local/bin/chromedriver
-  # google chrome 
-  - export CHROME_BIN=/usr/bin/google-chrome
-  - export DISPLAY=:99.0
-  - sh -e /etc/init.d/xvfb start
+
 jdk:
- - oraclejdk8
+    - oraclejdk8
+
+os:
+    - linux
+    
+install:
+   # Using chrome
+   #- wget https://chromedriver.storage.googleapis.com/2.28/chromedriver_linux64.zip
+   #- unzip chromedriver_linux64.zip
+   #- sudo apt-get install libnss3
+   #- sudo cp chromedriver /usr/local/bin/.
+   #- sudo chmod +x /usr/local/bin/chromedriver
+   
+   # Using firefox
+   #- wget https://github.com/mozilla/geckodriver/releases/download/v0.15.0/geckodriver-v0.15.0-linux64.tar.gz
+   #- tar -vzxf geckodriver-v0.15.0-linux64.tar.gz
+   #- sudo apt-get --only-upgrade install firefox
+   #- sudo cp geckodriver /usr/local/bin/.
+   #- sudo chmod +x /usr/local/bin/geckodriver
+
+   # Using phantom
+    - sudo apt-get install libfreetype6 libfreetype6-dev
+    - sudo apt-get install libfontconfig1 libfontconfig1-dev
+    - wget https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-2.1.1-linux-x86_64.tar.bz2
+    - sudo tar xjvf phantomjs-2.1.1-linux-x86_64.tar.bz2
+    - sudo cp ./phantomjs-2.1.1-linux-x86_64/bin/phantomjs /usr/local/bin/.
+    - sudo chmod +x /usr/local/bin/phantomjs
+
+before_script:
+   #- "export DISPLAY=:99.0"
+   #- "sh -e /etc/init.d/xvfb start"
+   #- Xvfb :99 -screen 1 1024x768x24 -ac +extension GLX +extension RANDR +render -noreset &
+   #- export DISPLAY=:99
+   #- sleep 3 # give xvfb some time to start   
+
 notifications:
   email:
     recipients:
       - guilhermekelling@gmail.com
-    on_success: always
     
     

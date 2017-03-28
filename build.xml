@@ -7,9 +7,17 @@
     <property name="jar.dir"     value="${build.dir}/jar"/>
     <property name="lib.dir"     value="libs"/>
 
-    <path id="classpath">
+    <path id="classpath.base">
         <fileset dir="${lib.dir}" includes="**/*.jar"/>
     </path>
+	
+	<path id="classpath.test">
+        <pathelement location="lib/selenium-server-standalone-3.0.0.jar"/>
+        <pathelement location="/usr/local/bin/chromedriver"/>
+        <pathelement location="${build.dir}"/>
+        <path refid="classpath.base"/>
+    </path>
+		
     <path id="application" location="${jar.dir}/${ant.project.name}.jar"/>
 
     <target name="clean">
@@ -18,12 +26,12 @@
 
     <target name="compile-src" depends="clean">
         <mkdir dir="${classes.dir}"/>
-        <javac srcdir="${src.dir}" destdir="${classes.dir}" classpathref="classpath"  includeantruntime="true"/>
+        <javac srcdir="${src.dir}" destdir="${classes.dir}" classpathref="classpath.base"  includeantruntime="true"/>
     </target>
     
     <target name="compile-test" depends="compile-src">
         <mkdir dir="${classes.dir}"/>
-        <javac srcdir="${test.dir}" destdir="${classes.dir}" classpathref="classpath"  includeantruntime="true"/>
+        <javac srcdir="${test.dir}" destdir="${classes.dir}" classpathref="classpath.test"  includeantruntime="true"/>
     </target>
 
 
@@ -34,11 +42,12 @@
 
     <target name="test" depends="jar">
         <junit printsummary="yes" haltonfailure="yes" showoutput="true" >
-        	<formatter type="plain" usefile="false" />
             <classpath>
-                <path refid="classpath"/>
+                <path refid="classpath.base"/>
                 <path refid="application"/>
+				<path refid="classpath.test"/>
             </classpath>
+			<formatter type="brief" usefile="false"/>
             <batchtest fork="yes">
                 <fileset dir="${test.dir}">
                     <include name="**/*Test*.java"/>
