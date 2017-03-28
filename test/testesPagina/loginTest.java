@@ -26,10 +26,7 @@ public class loginTest {
     pagina.acessarPaginaLogin();
     pagina.executarLogin("guilhermekelling@gmail.com","123@Trabalho");
     Thread.sleep(2000);
-    if(pagina.getDriver().getCurrentUrl().equals("https://app.organizze.com.br/inicio"))
-    	assertEquals("https://app.organizze.com.br/inicio", pagina.getDriver().getCurrentUrl());
-    else    
-        assertEquals("https://app.organizze.com.br:443/inicio", pagina.getDriver().getCurrentUrl());
+  	assertEquals("https://app.organizze.com.br/inicio", pagina.getDriver().getCurrentUrl());
   }
 
   //erro: //*[@id="login-form"]/div[1]/span
