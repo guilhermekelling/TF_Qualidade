@@ -20,7 +20,7 @@ public class LoginFalhaComUsuarioIncorretoTest {
 
 
   @Test
-  public void testSenhaIncorreta() throws Exception {
+  public void testLoginComSenhaIncorreta() throws Exception {
 	pagina.setTimeouts(30);
 	pagina.setBaseUrl("https://www.organizze.com.br");
     pagina.acessarPaginaLogin();
@@ -32,7 +32,7 @@ public class LoginFalhaComUsuarioIncorretoTest {
   }
   
   @Test
-  public void testComEmailIncorreta() throws Exception {
+  public void testLoginComEmailIncorreta() throws Exception {
 	pagina.setTimeouts(30);
 	pagina.setBaseUrl("https://www.organizze.com.br");
     pagina.acessarPaginaLogin();
@@ -43,7 +43,6 @@ public class LoginFalhaComUsuarioIncorretoTest {
     assertEquals("login", caminhoFinalEnderecoPagina);
   }
 
-  //erro: //*[@id="login-form"]/div[1]/span
   @After
   public void tearDown() throws Exception {
 	  pagina.getDriver().quit();
