@@ -6,9 +6,11 @@ import static org.junit.Assert.*;
 
 import org.openqa.selenium.*;
 
+import com.gargoylesoftware.htmlunit.javascript.host.canvas.CanvasCaptureMediaStreamTrack;
+
 import pagina.*;
 
-public class loginTest {
+public class LoginComSucessoTest {
   private Driver pagina = new Driver();
   private boolean acceptNextAlert = true;
   private StringBuffer verificationErrors = new StringBuffer();
@@ -22,12 +24,12 @@ public class loginTest {
   @Test
   public void testE() throws Exception {
 	pagina.setTimeouts(30);
-	pagina.setBaseUrl("https://www.organizze.com.br/");
+	pagina.setBaseUrl("https://www.organizze.com.br");
     pagina.acessarPaginaLogin();
     pagina.executarLogin("guilhermekelling@gmail.com","123@Trabalho");
     Thread.sleep(2000);
-    System.out.println(pagina.getDriver().getCurrentUrl().substring(pagina.getDriver().getCurrentUrl().length()-6, pagina.getDriver().getCurrentUrl().length()));
-  	assertEquals("inicio", pagina.getDriver().getCurrentUrl().substring(pagina.getDriver().getCurrentUrl().length()-6, pagina.getDriver().getCurrentUrl().length()));
+    String caminhoFinalEnderecoPagina = pagina.getDriver().getCurrentUrl().substring(pagina.getDriver().getCurrentUrl().length()-"inicio".length(), pagina.getDriver().getCurrentUrl().length());
+    assertEquals("inicio", caminhoFinalEnderecoPagina);
   }
 
   //erro: //*[@id="login-form"]/div[1]/span
