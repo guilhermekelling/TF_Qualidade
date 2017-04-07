@@ -11,7 +11,7 @@ import com.gargoylesoftware.htmlunit.javascript.host.canvas.CanvasCaptureMediaSt
 import pagina.*;
 
 public class LoginComSucessoTest {
-  private Driver pagina = new Driver();
+  private Pagina pagina = new Pagina();
   private boolean acceptNextAlert = true;
   private StringBuffer verificationErrors = new StringBuffer();
 
@@ -19,58 +19,24 @@ public class LoginComSucessoTest {
   public void setUp() throws Exception {
   }
   
-
-
-  @Test
+@Test
   public void testLoginComEmaileSenhaCorreta() throws Exception {
-	pagina.setTimeouts(30);
+	pagina.tempoParaEncontrarElementoEmSegundos(30);
 	pagina.setBaseUrl("https://www.organizze.com.br");
     pagina.acessarPaginaLogin();
     pagina.executarLogin("guilhermekelling@gmail.com","123@Trabalho");
-    Thread.sleep(2000);
-    String caminhoFinalEnderecoPagina = pagina.getDriver().getCurrentUrl().substring(pagina.getDriver().getCurrentUrl().length()-"inicio".length(), pagina.getDriver().getCurrentUrl().length());
+    Thread.sleep(2000); //Tempo para esperar carregar a página
+    String caminhoFinalEnderecoPagina = pagina.getCurrentUrl().substring(pagina.getCurrentUrl().length()-"inicio".length(), pagina.getCurrentUrl().length());
     assertEquals("inicio", caminhoFinalEnderecoPagina);
   }
 
   @After
   public void tearDown() throws Exception {
-	  pagina.getDriver().quit();
+	  pagina.fecharInstanciasAntigas();
     String verificationErrorString = verificationErrors.toString();
     if (!"".equals(verificationErrorString)) {
       fail(verificationErrorString);
     }
   }
 
-  private boolean isElementPresent(By by) {
-    try {
-      pagina.getDriver().findElement(by);
-      return true;
-    } catch (NoSuchElementException e) {
-      return false;
-    }
-  }
-
-  private boolean isAlertPresent() {
-    try {
-    	pagina.getDriver().switchTo().alert();
-      return true;
-    } catch (NoAlertPresentException e) {
-      return false;
-    }
-  }
-
-  private String closeAlertAndGetItsText() {
-    try {
-      Alert alert = pagina.getDriver().switchTo().alert();
-      String alertText = alert.getText();
-      if (acceptNextAlert) {
-        alert.accept();
-      } else {
-        alert.dismiss();
-      }
-      return alertText;
-    } finally {
-      acceptNextAlert = true;
-    }
-  }
 }
