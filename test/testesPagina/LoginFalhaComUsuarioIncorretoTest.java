@@ -4,13 +4,10 @@ import org.junit.*;
 
 import static org.junit.Assert.*;
 
-import org.openqa.selenium.*;
-
 import pagina.*;
 
 public class LoginFalhaComUsuarioIncorretoTest {
   private Pagina pagina = new Pagina();
-  private boolean acceptNextAlert = true;
   private StringBuffer verificationErrors = new StringBuffer();
 
   @Before

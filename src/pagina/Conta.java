@@ -1,8 +1,5 @@
 package pagina;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.support.ui.Select;
-
 public class Conta {
 	private String nome;
 	private String tipo;

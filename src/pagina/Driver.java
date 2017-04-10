@@ -8,7 +8,6 @@ import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.phantomjs.PhantomJSDriver;
 import org.openqa.selenium.phantomjs.PhantomJSDriverService;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -16,7 +15,6 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 public class Driver {
 	private WebDriver driver;	
 	private boolean acceptNextAlert = true;
-	private PaginaLogin paginaLogin;
 
 	public Driver() {
 		String OS = System.getProperty("os.name").toLowerCase();

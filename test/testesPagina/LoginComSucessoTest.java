@@ -4,15 +4,10 @@ import org.junit.*;
 
 import static org.junit.Assert.*;
 
-import org.openqa.selenium.*;
-
-import com.gargoylesoftware.htmlunit.javascript.host.canvas.CanvasCaptureMediaStreamTrack;
-
 import pagina.*;
 
 public class LoginComSucessoTest {
   private Pagina pagina = new Pagina();
-  private boolean acceptNextAlert = true;
   private StringBuffer verificationErrors = new StringBuffer();
 
   @Before

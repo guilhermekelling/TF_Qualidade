@@ -1,19 +1,11 @@
 package testesPagina;
 
-import java.util.regex.Pattern;
-import java.util.concurrent.TimeUnit;
 import org.junit.*;
 import static org.junit.Assert.*;
-import static org.hamcrest.CoreMatchers.*;
-import org.openqa.selenium.*;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.support.ui.Select;
-
 import pagina.Pagina;
 
 public class CriarContaTest {
 	  private Pagina pagina = new Pagina();
-	  private boolean acceptNextAlert = true;
 	  private StringBuffer verificationErrors = new StringBuffer();
 
   @Before
