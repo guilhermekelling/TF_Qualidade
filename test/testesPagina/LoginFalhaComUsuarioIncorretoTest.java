@@ -22,7 +22,7 @@ public class LoginFalhaComUsuarioIncorretoTest {
 	pagina.tempoParaEncontrarElementoEmSegundos(30);
 	pagina.setBaseUrl("https://www.organizze.com.br");
     pagina.acessarPaginaLogin();
-    pagina.executarLogin("guilhermekelling@gmail.com","1234@Trabalho");
+    pagina.getPaginaLogin().executarLogin("guilhermekelling@gmail.com","1234@Trabalho");
     Thread.sleep(2000);
     String caminhoFinalEnderecoPagina = pagina.getCurrentUrl().substring(pagina.getCurrentUrl().length()-"login".length(), pagina.getCurrentUrl().length());
   	System.out.print(caminhoFinalEnderecoPagina);
@@ -32,9 +32,9 @@ public class LoginFalhaComUsuarioIncorretoTest {
   @Test
   public void testLoginComEmailIncorreta() throws Exception {
 	pagina.tempoParaEncontrarElementoEmSegundos(30);
-	pagina.setBaseUrl("https://www.organizze.com.br");
+	pagina.setBaseUrl("https://app.organizze.com.br");
     pagina.acessarPaginaLogin();
-    pagina.executarLogin("guilhermekellingg@gmail.com","123@Trabalho");
+    pagina.getPaginaLogin().executarLogin("guilhermekellingg@hotmail.com","123@Trabalho");
     Thread.sleep(2000);
     String caminhoFinalEnderecoPagina = pagina.getCurrentUrl().substring(pagina.getCurrentUrl().length()-"login".length(), pagina.getCurrentUrl().length());
     assertEquals("login", caminhoFinalEnderecoPagina);

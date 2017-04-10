@@ -22,9 +22,9 @@ public class LoginComSucessoTest {
 @Test
   public void testLoginComEmaileSenhaCorreta() throws Exception {
 	pagina.tempoParaEncontrarElementoEmSegundos(30);
-	pagina.setBaseUrl("https://www.organizze.com.br");
+	pagina.setBaseUrl("https://app.organizze.com.br");
     pagina.acessarPaginaLogin();
-    pagina.executarLogin("guilhermekelling@gmail.com","123@Trabalho");
+    pagina.getPaginaLogin().executarLogin("guilhermekelling@hotmail.com","123@Trabalho");
     Thread.sleep(2000); //Tempo para esperar carregar a página
     String caminhoFinalEnderecoPagina = pagina.getCurrentUrl().substring(pagina.getCurrentUrl().length()-"inicio".length(), pagina.getCurrentUrl().length());
     assertEquals("inicio", caminhoFinalEnderecoPagina);
@@ -32,7 +32,7 @@ public class LoginComSucessoTest {
 
   @After
   public void tearDown() throws Exception {
-	  pagina.fecharInstanciasAntigas();
+	pagina.fecharInstanciasAntigas();
     String verificationErrorString = verificationErrors.toString();
     if (!"".equals(verificationErrorString)) {
       fail(verificationErrorString);

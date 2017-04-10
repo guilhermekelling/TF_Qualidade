@@ -9,6 +9,8 @@ public class Pagina {
 	private Driver driver;
 	private String baseUrl;
 	private PaginaLogin paginaLogin;
+	private PaginaConta paginaConta;
+	private PaginaLancamentos paginaLancamentos;
 	
 	public Pagina (){
 		driver = new Driver();
@@ -40,11 +42,31 @@ public class Pagina {
 	
 	public void acessarPaginaLogin(){
 		driver.getDriver().get(baseUrl+ "/login");
+		paginaLogin = new PaginaLogin(driver);
+	}
+	
+	public void acessarPaginaContas(){
+		driver.getDriver().get(baseUrl+ "/940649/a/contas");
+		paginaConta = new PaginaConta(driver);
+	}
+	
+	public void acessarPaginaLancamentos(){
+		driver.getDriver().get(baseUrl+ "/940649/lancamentos");
+		paginaLancamentos = new PaginaLancamentos(driver);
 	}
 
-	public void executarLogin(String email, String senha){
-		paginaLogin = new PaginaLogin(email,senha);
-		paginaLogin.executar(driver.getDriver());
+	public PaginaLogin getPaginaLogin(){
+		return paginaLogin;
 	}
+
+	public PaginaConta getPaginaConta(){
+		return paginaConta;
+	}
+	
+	public PaginaLancamentos getPaginaLancamentos(){
+		return paginaLancamentos;
+	}
+		
+
 
 }
