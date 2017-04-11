@@ -4,6 +4,8 @@ import static org.junit.Assert.assertEquals;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 
 public class Elementos {
@@ -71,14 +73,14 @@ public class Elementos {
 	    driver.findElement(By.id("transaction_amount")).sendKeys(valor);    	
     }
     
-    public void preencherDataLancamento(String data){
-    	System.out.println("Data "+data);
+    public void preencherDataLancamento(String data) throws InterruptedException{
 	    driver.findElement(By.id("transaction_date")).clear();
-	    driver.findElement(By.id("transaction_date")).sendKeys(data);    	
+	    driver.findElement(By.id("transaction_date")).sendKeys(data);    
+	    driver.findElement(By.linkText(data.substring(0,2))).click();
+	    Thread.sleep(4000);
     }
     
     public void selecionarContaLancamento(String conta){
-    	System.out.println("Conta "+conta);
 	    driver.findElement(By.xpath("//*[@id=\"new_transaction\"]/div[4]/div[1]/div[1]/div/a/i")).click();
 	//    if(conta.equals("Conta inicial"))	
 	    	driver.findElement(By.cssSelector("span.label")).click();
@@ -86,7 +88,6 @@ public class Elementos {
     }
     
     public void selecionarCategoriaLancamento(String categoria){
-    	System.out.println("Categoria "+categoria);
 	    driver.findElement(By.xpath("//*[@id=\"new_transaction\"]/div[4]/div[2]/div/div/a/i")).click();
 	    driver.findElement(By.linkText(categoria)).click();    	
     }
@@ -95,20 +96,32 @@ public class Elementos {
     	driver.findElement(By.xpath("//*[@id=\"new_transaction\"]/div[10]/button")).click();
     }
     
-    public void selecionarEscolherPeriodo(){
-    //	driver.findElement(By.xpath("//*[@id=\"surfer-options\"]/li[4]/a")).click();
-    	driver.findElement(By.linkText("Escolher período")).click();
+    public void selecionarEscolherPeriodo() throws InterruptedException{
+        WebElement menuPeriodo = driver.findElement(By.xpath("//*[@id=\"content\"]/div/div[1]/div/div[1]/div[2]"));
+    	Actions action = new Actions(driver);
+        action.moveToElement(menuPeriodo).perform();
+        Thread.sleep(2000);
+        driver.findElement(By.linkText("Escolher período")).click();
+        Thread.sleep(1000);
     }
     
-    public void preencherDataInicioFimDoFiltroEscolherPeriodo(String dataInicial, String dataFinal){
-    	driver.findElement(By.xpath("//*[@id=\"month_select_start_date\"]")).clear();
-	    driver.findElement(By.xpath("//*[@id=\"month_select_start_date\"]")).sendKeys(dataInicial);
-	    driver.findElement(By.xpath("//*[@id=\"month_select_end_date\"]")).clear();
-	    driver.findElement(By.xpath("//*[@id=\"month_select_end_date\"]")).sendKeys(dataFinal);
+    public void preencherDataInicioFimDoFiltroEscolherPeriodo(String dataInicial, String dataFinal) throws InterruptedException{
+    	driver.findElement(By.id("month_select_start_date")).clear();
+        driver.findElement(By.id("month_select_start_date")).sendKeys(dataInicial);
+        driver.findElement(By.linkText(dataInicial.substring(0,2))).click();
+        Thread.sleep(4000);    
+        driver.findElement(By.id("month_select_end_date")).clear();
+        driver.findElement(By.id("month_select_end_date")).sendKeys(dataFinal);
+        driver.findElement(By.linkText(dataFinal.substring(0,2))).click();
+        Thread.sleep(4000); 
     }
     
-    public void filtrarLancamentos(){
-    	driver.findElement(By.xpath("//*[@id=\"surfer-custom-form\"]/form/div[4]/button")).click();
+    public void filtrarLancamentos() throws InterruptedException{
+        WebElement menuPeriodo = driver.findElement(By.xpath("//*[@id=\"content\"]/div/div[1]/div/div[1]/div[2]"));
+    	Actions action = new Actions(driver);
+        action.moveToElement(menuPeriodo).click();
+        driver.findElement(By.xpath("//*[@id=\"surfer-custom-form\"]/form/div[4]/button")).click();
+        Thread.sleep(4000);
     }
 
     public void selecionarPesquisarLancamento(){

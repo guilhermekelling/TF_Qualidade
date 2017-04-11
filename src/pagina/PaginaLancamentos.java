@@ -14,12 +14,12 @@ public class PaginaLancamentos {
 		elementos.acessarFormularioAdicionarLancamento();		
 	}
 	
-	public void lancar(String descricao, String valor, String data, String conta, String categoria){
+	public void lancar(String descricao, String valor, String data, String conta, String categoria) throws InterruptedException{
 		lancamento = new Lancamento(descricao, valor, data, conta, categoria);	
 		executarLancamento(lancamento);
 	}
 	
-	public void executarLancamento(Lancamento lancamento){
+	public void executarLancamento(Lancamento lancamento) throws InterruptedException{
 		elementos.preencherDescricaoLancamento(lancamento.getDescricao());
 		elementos.preencherValorLancamento(lancamento.getValor());		
 		elementos.selecionarCategoriaLancamento(lancamento.getCategoria());	
@@ -30,7 +30,7 @@ public class PaginaLancamentos {
 	
 	public void filtrarPeriodoLancamentos(String dataInicial, String dataFinal) throws InterruptedException{
 		elementos.selecionarEscolherPeriodo();
-		Thread.sleep(1000);
+		Thread.sleep(2000);
 		elementos.preencherDataInicioFimDoFiltroEscolherPeriodo(dataInicial, dataFinal);
 		elementos.filtrarLancamentos();
 	}
