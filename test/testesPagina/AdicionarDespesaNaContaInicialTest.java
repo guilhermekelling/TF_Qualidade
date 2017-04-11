@@ -26,8 +26,8 @@ public class AdicionarDespesaNaContaInicialTest {
 	//  Thread.sleep(2000);
 	//  int numeroAleatorio = ((int)(Math.random() * 100000)) % 1000;
 	//  pagina.getPaginaLancamentos().lancar("Despesa12", "10,00", "22/03/17", "Conta inicial", "Lazer");
-	//  Thread.sleep(1000); //Tempo para esperar carregar a página
-	 // pagina.getPaginaLancamentos().filtrarPeriodoLancamentos("22/03/2017", "22/03/2017");
+	  Thread.sleep(1000); //Tempo para esperar carregar a página
+	  pagina.getPaginaLancamentos().filtrarPeriodoLancamentos("22/03/2017", "22/03/2017");
 	 // pagina.getPaginaLancamentos().pesquisarLancamento("Despesa12");
 	 // Thread.sleep(1000); //Tempo para esperar carregar a página
      // assertEquals("Despesa12", pagina.getPaginaLancamentos().getNomePrimeiroLancamentoDoResultadoDaPesquisa());
