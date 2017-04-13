@@ -67,10 +67,17 @@ public class Elementos {
 	    driver.findElement(By.id("transaction_description")).clear();
 	    driver.findElement(By.id("transaction_description")).sendKeys(descricao);
     }
+
     
     public void preencherValorLancamento(String valor){
 	    driver.findElement(By.id("transaction_amount")).clear();
 	    driver.findElement(By.id("transaction_amount")).sendKeys(valor);    	
+    }
+    
+    public void teste(){
+    	driver.findElement(By.id("transaction_description")).clear();
+    	driver.findElement(By.id("transaction_description")).sendKeys("Salario");
+    	
     }
     
     public void preencherDataLancamento(String data) throws InterruptedException{
@@ -102,7 +109,6 @@ public class Elementos {
         action.moveToElement(menuPeriodo).perform();
         Thread.sleep(2000);
         driver.findElement(By.linkText("Escolher período")).click();
-        Thread.sleep(1000);
     }
     
     public void preencherDataInicioFimDoFiltroEscolherPeriodo(String dataInicial, String dataFinal) throws InterruptedException{
@@ -148,4 +154,27 @@ public class Elementos {
     public String getValorPrimeiroLancamentoDoResultadoDaPesquisa(){
     	return driver.findElement(By.cssSelector("span.ng-binding")).getText();
     }
+    
+    public String getSaldoTotalPaginaInicio(){
+    	return driver.findElement(By.cssSelector("span.value.blue")).getText();
+    }
+    
+    public String getSaldoContaInicialPaginaInicio(){
+    	return driver.findElement(By.cssSelector("big")).getText();
+    }
+    
+    public void acessarFormularioAdicionarReceita(){
+    	driver.findElement(By.xpath("//div[@id='user_account_widget_fast_add']/div/div[2]/div/ul/li[2]/a/i")).click();
+    }
+    
+        
+    public void selecionarContaParaAdicionarReceita(String conta){
+        driver.findElement(By.xpath("//form[@id='new_transaction']/div[4]/div/div/div/a/i")).click();
+        driver.findElement(By.cssSelector("span.label")).click();
+    }
+  
+    public void executarLancamentoReceita(){
+    	driver.findElement(By.cssSelector("button.button.button-blue")).click();
+    }
+    
 }

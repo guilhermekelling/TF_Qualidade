@@ -6,6 +6,7 @@ public class Pagina {
 	private PaginaLogin paginaLogin;
 	private PaginaConta paginaConta;
 	private PaginaLancamentos paginaLancamentos;
+	private PaginaInicio paginaInicio;
 	
 	public Pagina (){
 		driver = new Driver();
@@ -49,6 +50,10 @@ public class Pagina {
 		driver.getDriver().get(baseUrl+ "/940649/lancamentos");
 		paginaLancamentos = new PaginaLancamentos(driver);
 	}
+	
+	public void acessarPaginaInicio(){
+		paginaInicio = new PaginaInicio(driver);
+	}
 
 	public PaginaLogin getPaginaLogin(){
 		return paginaLogin;
@@ -60,6 +65,10 @@ public class Pagina {
 	
 	public PaginaLancamentos getPaginaLancamentos(){
 		return paginaLancamentos;
+	}
+	
+	public PaginaInicio getPaginaInicio(){
+		return paginaInicio;
 	}
 		
 
