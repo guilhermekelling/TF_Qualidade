@@ -107,8 +107,10 @@ public class Elementos {
         WebElement menuPeriodo = driver.findElement(By.xpath("//*[@id=\"content\"]/div/div[1]/div/div[1]/div[2]"));
     	Actions action = new Actions(driver);
         action.moveToElement(menuPeriodo).perform();
-        Thread.sleep(2000);
-        driver.findElement(By.linkText("Escolher período")).click();
+        Thread.sleep(3000);
+        //driver.findElement(By.linkText("Escolher período")).click();
+        driver.findElement(By.xpath("//*[@id=\"surfer-options\"]/li[4]/a")).click();
+      
     }
     
     public void preencherDataInicioFimDoFiltroEscolherPeriodo(String dataInicial, String dataFinal) throws InterruptedException{
@@ -176,5 +178,19 @@ public class Elementos {
     public void executarLancamentoReceita(){
     	driver.findElement(By.cssSelector("button.button.button-blue")).click();
     }
+
+	public void acessarFormularioTranferir() {
+		driver.findElement(By.xpath("//div[@id='user_account_widget_fast_add']/div/div[2]/div/ul/li[3]/a/i")).click();		
+	}
+
+	public void selecionarOrigemContaInicial() {
+		 driver.findElement(By.cssSelector("input.ui-autocomplete-input")).click();
+		 driver.findElement(By.cssSelector("span.label")).click();
+	}
+
+	public void selecionarDestinoContaInicial2() {
+	    driver.findElement(By.xpath("(//input[@type='text'])[2]")).click();
+	    driver.findElement(By.cssSelector("a[title=\"Conta inicial2\"] > span.label")).click();		
+	}
     
 }

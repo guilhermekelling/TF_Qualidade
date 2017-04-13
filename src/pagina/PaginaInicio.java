@@ -43,4 +43,16 @@ public class PaginaInicio {
 	public Driver getDriver(){
 		return driver;
 	}
+
+	public void acessarFormularioTranferir() {
+		elementos.acessarFormularioTranferir();		
+	}
+
+	public void selecionarOrigemContaInicial() {
+		elementos.selecionarOrigemContaInicial();		
+	}
+
+	public void selecionarDestinoContaInicial2() {
+		elementos.selecionarDestinoContaInicial2();		
+	}
 }
