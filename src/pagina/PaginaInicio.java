@@ -48,11 +48,45 @@ public class PaginaInicio {
 		elementos.acessarFormularioTranferir();		
 	}
 
-	public void selecionarOrigemContaInicial() {
+	public void selecionarOrigemContaInicial() throws InterruptedException {
 		elementos.selecionarOrigemContaInicial();		
 	}
 
-	public void selecionarDestinoContaInicial2() {
+	public void selecionarDestinoContaInicial2() throws InterruptedException {
 		elementos.selecionarDestinoContaInicial2();		
 	}
+
+	public void acessarCadastroDeCartoesDeCredito() throws InterruptedException {
+		elementos.acessarCadastroDeCartoesDeCredito();
+	}
+
+	public void adicionarCartaoDeCredito(String bandeira, String nomeProprietario, String diaFechamento, String diaVencimento,
+			String limite) throws InterruptedException {
+		elementos.selecionarBanderia(bandeira);
+		elementos.preencherNomeProprietarioCartao(nomeProprietario);
+		elementos.preencherDiaFechamentoCartao(diaFechamento);
+		elementos.preencherDiaVencimentoCartao(diaVencimento);
+		elementos.preencherLimiteCartao(limite);
+		elementos.selecionarContaInicialPadraoPagamentoCartao();
+		elementos.executarCadastroCartaoDeCredito();
+			
+		}
+
+	public String getNomeProprietarioCartao() {
+		return elementos.getNomeProprietarioCartao();	
+	}
+
+	public void preencherValorTranferencia(String valorTransferencia) {
+		elementos.preencherValorTranferencia(valorTransferencia);		
+	}
+
+	public void preencherDataTransferencia(String dataTransferencia) {
+		elementos.preencherDataTransferencia(dataTransferencia);		
+	}
+
+	public void executarTransferencia() {
+		elementos.executarTransferencia();		
+	}
+		
+
 }

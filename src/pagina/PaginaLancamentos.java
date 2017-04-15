@@ -54,5 +54,22 @@ public class PaginaLancamentos {
 	
 	public String getValorPrimeiroLancamentoDoResultadoDaPesquisa(){
 		return elementos.getValorPrimeiroLancamentoDoResultadoDaPesquisa();
+	}
+
+	public String verificaSeLancamentoFoiAdicionado() {
+		return elementos.verificaSeLancamentoFoiAdicionado();
+	}
+
+	public void acessarPrimeriaDespesaDaPesquisa() {
+		elementos.acessarPrimeriaDespesaDaPesquisa();		
+	}
+
+	public void removerDespesaAcessada() throws InterruptedException {
+		elementos.removerDespesaAcessada();
+		
+	}
+
+	public String verificaSeLancamentoFoiDeletado() {
+		return elementos.verificaSeLancamentoFoiDeletado();
 	}	
 }

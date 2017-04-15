@@ -28,25 +28,17 @@ public class TransferenciaDaContaInicialParaContaInicial2Test {
 	pagina.setBaseUrl("https://app.organizze.com.br");
 	pagina.acessarPaginaLogin();
 	pagina.getPaginaLogin().executarLogin("guilhermekelling@hotmail.com","123@Trabalho");
-	Thread.sleep(2000); //Tempo para esperar carregar a página
-	
+	Thread.sleep(4000); //Tempo para esperar carregar a página
+	pagina.acessarPaginaInicio();
 	pagina.getPaginaInicio().acessarFormularioTranferir();
 	Thread.sleep(2000);
-    
-	pagina.getPaginaInicio().selecionarOrigemContaInicial();
+    pagina.getPaginaInicio().selecionarOrigemContaInicial();
 	//Seleciona conta de destino
-
     Thread.sleep(2000);
-    pagina.getPaginaInicio().selecionarDestinoContaInicial2();
-   
-        
- //   driver.findElement(By.id("transaction_amount")).clear();
- //   driver.findElement(By.id("transaction_amount")).sendKeys("10,00");
- //   driver.findElement(By.id("transaction_date")).clear();
-  //  driver.findElement(By.id("transaction_date")).sendKeys("01/04/2016");
-  //  driver.findElement(By.linkText("11")).click();
-  //  driver.findElement(By.cssSelector("button.button.button-blue")).click();
-  //  Thread.sleep(8000);
+    pagina.getPaginaInicio().selecionarDestinoContaInicial2();    
+    pagina.getPaginaInicio().preencherValorTranferencia("100,00");
+    pagina.getPaginaInicio().preencherDataTransferencia("01/04/2016");
+    pagina.getPaginaInicio().executarTransferencia();
   }
 
   @After

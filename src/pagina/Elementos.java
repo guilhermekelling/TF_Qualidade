@@ -2,6 +2,8 @@ package pagina;
 
 import static org.junit.Assert.assertEquals;
 
+import java.util.NoSuchElementException;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -89,9 +91,7 @@ public class Elementos {
     
     public void selecionarContaLancamento(String conta){
 	    driver.findElement(By.xpath("//*[@id=\"new_transaction\"]/div[4]/div[1]/div[1]/div/a/i")).click();
-	//    if(conta.equals("Conta inicial"))	
-	    	driver.findElement(By.cssSelector("span.label")).click();
-	 //   driver.findElement(By.linkText("Conta inicialoutros")).click();;    	
+    	driver.findElement(By.cssSelector("span.label")).click();
     }
     
     public void selecionarCategoriaLancamento(String categoria){
@@ -107,7 +107,7 @@ public class Elementos {
         WebElement menuPeriodo = driver.findElement(By.xpath("//*[@id=\"content\"]/div/div[1]/div/div[1]/div[2]"));
     	Actions action = new Actions(driver);
         action.moveToElement(menuPeriodo).perform();
-        Thread.sleep(3000);
+        Thread.sleep(5000);
         //driver.findElement(By.linkText("Escolher período")).click();
         driver.findElement(By.xpath("//*[@id=\"surfer-options\"]/li[4]/a")).click();
       
@@ -180,17 +180,111 @@ public class Elementos {
     }
 
 	public void acessarFormularioTranferir() {
-		driver.findElement(By.xpath("//div[@id='user_account_widget_fast_add']/div/div[2]/div/ul/li[3]/a/i")).click();		
+		driver.findElement(By.cssSelector("a.transference")).click();
 	}
 
-	public void selecionarOrigemContaInicial() {
+	public void selecionarOrigemContaInicial() throws InterruptedException {
 		 driver.findElement(By.cssSelector("input.ui-autocomplete-input")).click();
+		 Thread.sleep(2000);
 		 driver.findElement(By.cssSelector("span.label")).click();
 	}
 
-	public void selecionarDestinoContaInicial2() {
-	    driver.findElement(By.xpath("(//input[@type='text'])[2]")).click();
-	    driver.findElement(By.cssSelector("a[title=\"Conta inicial2\"] > span.label")).click();		
+	public void selecionarDestinoContaInicial2() throws InterruptedException {
+		driver.findElement(By.xpath("//form[@id='new_transference']/div[3]/div/div/a/i"));
+		WebElement menuPeriodo = driver.findElement(By.xpath("//form[@id='new_transference']/div[3]/div/div/a/i"));
+	    Actions action = new Actions(driver);
+	    action.moveToElement(menuPeriodo).perform();
+	    Thread.sleep(3000);
+	    //driver.findElement(By.linkText("Escolher período")).click();
+	    driver.findElement(By.xpath("//*[@id=\"ui-id-8\"]/a/i")).click();
+		
+	    
+		//driver.findElement(By.xpath("//form[@id='new_transference']/div[3]/div/div/a/i"));
+	    //Thread.sleep(2000);
+	    //driver.findElement(By.linkText("Conta inicial2outros")).click();	
 	}
+
+	public void acessarCadastroDeCartoesDeCredito() throws InterruptedException {
+		driver.findElement(By.linkText("Cadastre seus cartões de crédito")).click();
+		Thread.sleep(4000);
+		driver.findElement(By.cssSelector("i.icon-plus.blue")).click();		
+	}
+
+	public void selecionarBanderia(String bandeira) throws InterruptedException {
+		Thread.sleep(2000);
+	    driver.findElement(By.cssSelector("a.current > img")).click();
+		driver.findElement(By.cssSelector("a[title=\""+ bandeira +"\"] > img")).click();
+	    driver.findElement(By.cssSelector("a.current > img")).click();
+	}
+
+	public void preencherNomeProprietarioCartao(String nomeProprietario) {
+		driver.findElement(By.id("name")).clear();
+	    driver.findElement(By.id("name")).sendKeys(nomeProprietario);		
+	}
+
+	public void preencherDiaFechamentoCartao(String diaFechamento) {
+		new Select(driver.findElement(By.id("billing_cycle_day"))).selectByVisibleText(diaFechamento);		
+	}
+
+	public void preencherDiaVencimentoCartao(String diaVencimento) {
+		new Select(driver.findElement(By.id("billing_due_day"))).selectByVisibleText(diaVencimento);
+		
+	}
+
+	public void preencherLimiteCartao(String limite) {
+	    driver.findElement(By.id("limit")).clear();
+	    driver.findElement(By.id("limit")).sendKeys(limite);		
+	}
+
+	public void selecionarContaInicialPadraoPagamentoCartao() throws InterruptedException {
+		driver.findElement(By.linkText("+ conta padrão de pagamento")).click();
+		Thread.sleep(4000);
+	    driver.findElement(By.xpath("//form[@id='new_credit_card']/div[2]/div[5]/div/div/a/i")).click();
+	    Thread.sleep(4000);
+	    driver.findElement(By.linkText("Conta inicialoutros")).click();
+	}
+
+	public void executarCadastroCartaoDeCredito() {
+		driver.findElement(By.cssSelector("button.button.button-blue")).click();		
+	}
+
+	public String getNomeProprietarioCartao() {
+		return driver.findElement(By.cssSelector("span.balance")).getText();
+	}
+
+	public void preencherValorTranferencia(String valorTransferencia) {
+		 driver.findElement(By.id("transaction_amount")).clear();
+		 driver.findElement(By.id("transaction_amount")).sendKeys(valorTransferencia);
+		
+	}
+
+	public void preencherDataTransferencia(String dataTransferencia) {
+		driver.findElement(By.id("transaction_date")).clear();
+		driver.findElement(By.id("transaction_date")).sendKeys(dataTransferencia);	
+		driver.findElement(By.linkText(dataTransferencia.substring(0, 2))).click();
+	}
+
+	public void executarTransferencia() {
+		driver.findElement(By.cssSelector("button.button.button-blue")).click();		
+	}
+
+	public String verificaSeLancamentoFoiAdicionado() {
+		return driver.findElement(By.cssSelector("p")).getText();
+	}
+
+	public void acessarPrimeriaDespesaDaPesquisa() {
+		driver.findElement(By.cssSelector("em.h")).click();		
+	}
+
+	public void removerDespesaAcessada() throws InterruptedException {
+	    driver.findElement(By.cssSelector("a.remove")).click();
+	    Thread.sleep(4000);
+	    driver.findElement(By.cssSelector("button.button.button-red")).click();		
+	}
+
+	public String verificaSeLancamentoFoiDeletado() {
+		return driver.findElement(By.cssSelector("div.ng-scope > h3")).getText();
+	}
+		
     
 }
