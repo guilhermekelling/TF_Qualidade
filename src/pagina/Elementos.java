@@ -323,6 +323,19 @@ public class Elementos {
 	public String getNomeDaPrimeiraReceita() {
 		return driver.findElement(By.cssSelector("em.h")).getText();
 	}
+
+	public boolean verificaErroLogin() {
+		return isElementPresent(By.cssSelector("span.error-message"));
+	}
+	
+	private boolean isElementPresent(By by) {
+		try {
+			driver.findElement(by);
+			return true;
+		} catch (NoSuchElementException e) {
+			return false;
+		}
+	}
 		
     
 }

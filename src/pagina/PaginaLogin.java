@@ -20,4 +20,8 @@ public class PaginaLogin {
 		elementos.preencherSenhaDoUsuario(login.getSenha()); 
 	    elementos.efetuarLoggin();
 	}
+
+	public boolean verificaErroLogin() {
+		return elementos.verificaErroLogin();
+	}
 }
