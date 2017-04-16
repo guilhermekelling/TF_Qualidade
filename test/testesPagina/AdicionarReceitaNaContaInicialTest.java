@@ -5,6 +5,10 @@ package testesPagina;
 import java.util.regex.Pattern;
 import java.util.concurrent.TimeUnit;
 import org.junit.*;
+import org.junit.runners.MethodSorters;
+import org.junit.FixMethodOrder;
+import org.junit.runners.MethodSorters;
+
 import static org.junit.Assert.*;
 import static org.hamcrest.CoreMatchers.*;
 import org.openqa.selenium.*;
@@ -14,22 +18,19 @@ import org.openqa.selenium.support.ui.Select;
 
 import pagina.Pagina;
 
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class AdicionarReceitaNaContaInicialTest {
   private Pagina pagina = new Pagina();
   private StringBuffer verificationErrors = new StringBuffer();
-  private String nomeDaReceita;
-  double valorDaTransacao;
-  int numeroAleatorio;
+  private String nomeDaReceita = "Receita1001";
+  double valorDaTransacao = 1000.00;
 
   @Before
   public void setUp() throws Exception {
-	numeroAleatorio = ((int)(Math.random() * 100000)) % 1000;
-	nomeDaReceita = "Receita"+numeroAleatorio;
-	valorDaTransacao = 1000.00;
   }
 
   @Test
-  public void testCadastroReceita() throws Exception {
+  public void firstTestCadastroReceita() throws Exception {
 	pagina.tempoParaEncontrarElementoEmSegundos(30);
 	pagina.setBaseUrl("https://app.organizze.com.br");
 	pagina.acessarPaginaLogin();
@@ -47,6 +48,41 @@ public class AdicionarReceitaNaContaInicialTest {
 	double saldoContaInicialAtual = valorDaTransacao + converteParaDouble(saldoContaInicial);
     assertEquals(formataDoubleParaComparar(saldoTotalAtual), limparParaComparar(pagina.getPaginaInicio().getSaldoTotalPaginaInicio()));
     assertEquals(formataDoubleParaComparar(saldoContaInicialAtual), limparParaComparar(pagina.getPaginaInicio().getSaldoContaInicialPaginaInicio()));
+    tearDown();
+  }
+  
+  @Test
+  public void secondTestPesquisaReceitaCadastrada() throws Exception{
+	pagina.tempoParaEncontrarElementoEmSegundos(30);
+	pagina.setBaseUrl("https://app.organizze.com.br");
+	pagina.acessarPaginaLogin();
+	pagina.getPaginaLogin().executarLogin("guilhermekelling@hotmail.com","123@Trabalho");
+	Thread.sleep(4000); //Tempo para esperar carregar a página
+	pagina.acessarPaginaLancamentos();
+	Thread.sleep(4000);
+	pagina.getPaginaLancamentos().filtrarPeriodoLancamentos("22032017", "22032017");
+	Thread.sleep(4000);
+	pagina.getPaginaLancamentos().pesquisarLancamento(nomeDaReceita);
+	Thread.sleep(4000);
+	assertEquals(nomeDaReceita, pagina.getPaginaLancamentos().getNomePrimeiroLancamentoDoResultadoDaPesquisa());
+}
+  
+  @Test
+  public void thirdTestExcluiReceitaCadastrada() throws Exception{
+	pagina.tempoParaEncontrarElementoEmSegundos(30);
+	pagina.setBaseUrl("https://app.organizze.com.br");
+	pagina.acessarPaginaLogin();
+	pagina.getPaginaLogin().executarLogin("guilhermekelling@hotmail.com","123@Trabalho");
+	Thread.sleep(4000); //Tempo para esperar carregar a página
+	pagina.acessarPaginaLancamentos();
+	Thread.sleep(4000);
+	pagina.getPaginaLancamentos().filtrarPeriodoLancamentos("22032017", "22032017");
+	Thread.sleep(4000);
+	pagina.getPaginaLancamentos().pesquisarLancamento(nomeDaReceita);
+	Thread.sleep(4000);
+	pagina.getPaginaLancamentos().removerPrimerioLancamentoExibido();
+	Thread.sleep(4000);
+	assertEquals("Nenhuma movimentação no filtro selecionado", pagina.getPaginaLancamentos().verificarSeNaoExibeNenhumLancamento());  
   }
   
   @After

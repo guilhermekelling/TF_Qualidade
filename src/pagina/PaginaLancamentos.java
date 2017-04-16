@@ -31,8 +31,8 @@ public class PaginaLancamentos {
 	public void filtrarPeriodoLancamentos(String dataInicial, String dataFinal) throws InterruptedException{
 		elementos.selecionarEscolherPeriodo();
 		Thread.sleep(2000);
-		elementos.preencherDataInicioFimDoFiltroEscolherPeriodo(dataInicial, dataFinal);
-		elementos.filtrarLancamentos();
+		//elementos.preencherDataInicioFimDoFiltroEscolherPeriodo(dataInicial, dataFinal);
+		//elementos.filtrarLancamentos();
 	}
 	
 	public void pesquisarLancamento(String textoDaPesquisa){
@@ -64,12 +64,16 @@ public class PaginaLancamentos {
 		elementos.acessarPrimeriaDespesaDaPesquisa();		
 	}
 
-	public void removerDespesaAcessada() throws InterruptedException {
-		elementos.removerDespesaAcessada();
+	public void removerPrimerioLancamentoExibido() throws InterruptedException {
+		elementos.removerPrimerioLancamentoExibido();
 		
 	}
 
 	public String verificaSeLancamentoFoiDeletado() {
 		return elementos.verificaSeLancamentoFoiDeletado();
 	}	
+	
+	public String verificarSeNaoExibeNenhumLancamento() {
+		return elementos.verificarSeNaoExibeNenhumLancamento();		
+	}
 }

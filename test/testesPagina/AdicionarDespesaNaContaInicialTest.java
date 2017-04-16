@@ -40,7 +40,7 @@ public class AdicionarDespesaNaContaInicialTest {
 	  pagina.getPaginaLogin().executarLogin("guilhermekelling@hotmail.com","123@Trabalho");
 	  Thread.sleep(2000); //Tempo para esperar carregar a página
 	  pagina.acessarPaginaLancamentos();
-	  Thread.sleep(6000); //Tempo para esperar carregar a página
+	  Thread.sleep(4000); //Tempo para esperar carregar a página
 	  pagina.getPaginaLancamentos().filtrarPeriodoLancamentos("22032017", "22032017");
 	  Thread.sleep(3000);
 	  pagina.getPaginaLancamentos().pesquisarLancamento(nomeDaDespesa);
@@ -67,7 +67,7 @@ public class AdicionarDespesaNaContaInicialTest {
       Thread.sleep(2000);
       pagina.getPaginaLancamentos().acessarPrimeriaDespesaDaPesquisa();
       Thread.sleep(2000);
-      pagina.getPaginaLancamentos().removerDespesaAcessada();
+      pagina.getPaginaLancamentos().removerPrimerioLancamentoExibido();
       Thread.sleep(2000); 
 	  assertEquals("Nenhuma movimentação no filtro selecionado", pagina.getPaginaLancamentos().verificaSeLancamentoFoiDeletado());
   }

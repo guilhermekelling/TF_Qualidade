@@ -104,13 +104,13 @@ public class Elementos {
     }
     
     public void selecionarEscolherPeriodo() throws InterruptedException{
-        WebElement menuPeriodo = driver.findElement(By.xpath("//*[@id=\"content\"]/div/div[1]/div/div[1]/div[2]"));
-    	Actions action = new Actions(driver);
-        action.moveToElement(menuPeriodo).perform();
-        Thread.sleep(5000);
-        //driver.findElement(By.linkText("Escolher período")).click();
-        driver.findElement(By.xpath("//*[@id=\"surfer-options\"]/li[4]/a")).click();
-      
+    	//WebElement menuPeriodo = driver.findElement(By.xpath("//*[@id=\"content\"]/div/div[1]/div/div[1]/div[2]"));
+       	//Actions action = new Actions(driver);
+        //action.moveToElement(menuPeriodo).perform();
+        //Thread.sleep(3000);
+        //driver.findElement(By.xpath("//*[@id=\"surfer-options\"]/li[4]/a")).click();
+    	driver.findElement(By.xpath("//div[@id='content']/div/div/div/div/div/a/i")).click();
+    	
     }
     
     public void preencherDataInicioFimDoFiltroEscolherPeriodo(String dataInicial, String dataFinal) throws InterruptedException{
@@ -276,14 +276,52 @@ public class Elementos {
 		driver.findElement(By.cssSelector("em.h")).click();		
 	}
 
-	public void removerDespesaAcessada() throws InterruptedException {
-	    driver.findElement(By.cssSelector("a.remove")).click();
+	public void removerPrimerioLancamentoExibido() throws InterruptedException {
+		driver.findElement(By.cssSelector("span.full-description.ng-binding")).click();
+		Thread.sleep(4000);
+		driver.findElement(By.cssSelector("a.remove")).click();
 	    Thread.sleep(4000);
 	    driver.findElement(By.cssSelector("button.button.button-red")).click();		
 	}
+	
 
 	public String verificaSeLancamentoFoiDeletado() {
 		return driver.findElement(By.cssSelector("div.ng-scope > h3")).getText();
+	}
+
+	public void acessarLancamentosDaContaInicial() throws InterruptedException {
+		driver.findElement(By.cssSelector("big.name")).click();	
+		Thread.sleep(4000);
+		driver.findElement(By.linkText("ver mais lançamentos")).click();
+	}
+
+	public void pesquisarReceita(String nomeDaReceita) throws InterruptedException {
+		//driver.findElement(By.linkText("Tipo")).click();
+		//Thread.sleep(4000);
+	    //driver.findElement(By.linkText("receitas")).click();
+	    //Thread.sleep(4000);
+	    driver.findElement(By.cssSelector("i.icon-search")).click();
+	    Thread.sleep(4000);
+	    driver.findElement(By.xpath("(//input[@type='text'])[3]")).clear();
+	    driver.findElement(By.xpath("(//input[@type='text'])[3]")).sendKeys(nomeDaReceita);
+	    Thread.sleep(4000);
+	    driver.findElement(By.cssSelector("em.h")).click();		
+	}
+
+	public void removerPrimeiraReceitaDaPagina() throws InterruptedException {
+		driver.findElement(By.cssSelector("a.remove")).click();
+		Thread.sleep(4000);
+	    driver.findElement(By.cssSelector("button.button.button-red")).click();		
+	    Thread.sleep(4000);
+	}
+
+	public String verificarSeNaoExibeNenhumLancamento() {
+		// TODO Auto-generated method stub
+		return driver.findElement(By.cssSelector("div.ng-scope > h3")).getText();
+	}
+
+	public String getNomeDaPrimeiraReceita() {
+		return driver.findElement(By.cssSelector("em.h")).getText();
 	}
 		
     

@@ -87,6 +87,17 @@ public class PaginaInicio {
 	public void executarTransferencia() {
 		elementos.executarTransferencia();		
 	}
-		
+
+	public void acessarLancamentosDaContaInicial() throws InterruptedException{
+		elementos.acessarLancamentosDaContaInicial();		
+	}
+
+	public void pesquisarReceita(String nomeDaReceita) throws InterruptedException {
+		elementos.pesquisarReceita(nomeDaReceita);		
+	}
+
+	public void removerPrimeiraReceitaDaPagina() throws InterruptedException {
+		elementos.removerPrimeiraReceitaDaPagina();		
+	}
 
 }
