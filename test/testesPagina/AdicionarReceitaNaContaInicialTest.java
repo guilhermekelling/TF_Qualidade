@@ -48,7 +48,6 @@ public class AdicionarReceitaNaContaInicialTest {
 	double saldoContaInicialAtual = valorDaTransacao + converteParaDouble(saldoContaInicial);
     assertEquals(formataDoubleParaComparar(saldoTotalAtual), limparParaComparar(pagina.getPaginaInicio().getSaldoTotalPaginaInicio()));
     assertEquals(formataDoubleParaComparar(saldoContaInicialAtual), limparParaComparar(pagina.getPaginaInicio().getSaldoContaInicialPaginaInicio()));
-    tearDown();
   }
   
   @Test

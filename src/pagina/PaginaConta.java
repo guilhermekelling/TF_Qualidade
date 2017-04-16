@@ -9,15 +9,15 @@ public class PaginaConta {
 	
 	public PaginaConta(Driver driver){
 		this.driver = driver;
+		elementos.setWebDriver(driver.getDriver());
 	}
 	
 	public void criarConta(String nome, String tipo, String saldo){
 		conta = new Conta(nome,tipo,saldo);
-		adicionarConta(driver.getDriver());
+		adicionarConta();
 	}
 		
-	public void adicionarConta(WebDriver driver){
-		elementos.setWebDriver(driver);
+	public void adicionarConta(){
 		elementos.acessarFormularioDeNovaConta();
 		elementos.preencherNomeDaNovaConta(conta.getNome());	
 		elementos.preencherTipoDaNovaConta(conta.getTipo()); 
@@ -27,6 +27,18 @@ public class PaginaConta {
 	
 	public String getPrimeiraContaExibidaNaPaginaContas(){
 		return elementos.getPrimeiraContaExibidaNaPaginaContas();
+	}
+
+	public String buscaNomeTerceiraConta() {
+		return elementos.buscaNomeTerceiraConta();		
+	}
+
+	public boolean verificaSePossuiTerceiraConta() {
+		return elementos.verificaSePossuiTerceiraConta();
+	}
+
+	public void excluirTerceiraConta() throws InterruptedException {
+		elementos.excluirTerceiraConta();		
 	}
 
 }

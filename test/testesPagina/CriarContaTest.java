@@ -3,28 +3,47 @@ package testesPagina;
 import org.junit.*;
 import static org.junit.Assert.*;
 import pagina.Pagina;
+import org.junit.FixMethodOrder;
+import org.junit.runners.MethodSorters;
 
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class CriarContaTest {
 	  private Pagina pagina = new Pagina();
 	  private StringBuffer verificationErrors = new StringBuffer();
+	  private String nomeConta = "Conta1001";
 
   @Before
   public void setUp() throws Exception {
   }
 
   @Test
-  public void testECriaConta() throws Exception {
+  public void firstTestCriaConta() throws Exception {
 	pagina.tempoParaEncontrarElementoEmSegundos(30);
 	pagina.setBaseUrl("https://app.organizze.com.br");
 	pagina.acessarPaginaLogin();
 	pagina.getPaginaLogin().executarLogin("guilhermekelling@hotmail.com","123@Trabalho");
 	Thread.sleep(2000); //Tempo para esperar carregar a página
     pagina.acessarPaginaContas();
-    int numeroAleatorio = ((int)(Math.random() * 100000)) % 1000;
-    pagina.getPaginaConta().criarConta("Conta"+numeroAleatorio, "Conta corrente", "100,00");
+    pagina.getPaginaConta().criarConta("Conta1001", "Conta corrente", "100,00");
     Thread.sleep(2000);
-    System.out.println("Conta"+numeroAleatorio);
-    assertEquals("Conta"+numeroAleatorio+" (Conta corrente)", pagina.getPaginaConta().getPrimeiraContaExibidaNaPaginaContas());
+    assertEquals("Conta1001 (Conta corrente)", pagina.getPaginaConta().getPrimeiraContaExibidaNaPaginaContas());
+  }
+  
+  @Test
+  public void secondTestExcluir() throws Exception {
+	pagina.tempoParaEncontrarElementoEmSegundos(30);
+	pagina.setBaseUrl("https://app.organizze.com.br");
+	pagina.acessarPaginaLogin();
+	pagina.getPaginaLogin().executarLogin("guilhermekelling@hotmail.com","123@Trabalho");
+	Thread.sleep(2000); //Tempo para esperar carregar a página
+    pagina.acessarPaginaContas();
+    Thread.sleep(4000);
+    if(pagina.getPaginaConta().verificaSePossuiTerceiraConta()){
+    	assertEquals("Conta1001 (Conta corrente)", pagina.getPaginaConta().buscaNomeTerceiraConta());
+    }    
+    pagina.getPaginaConta().excluirTerceiraConta();
+    
+   
   }
 
   @After

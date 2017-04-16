@@ -5,6 +5,7 @@ import static org.junit.Assert.assertEquals;
 import java.util.NoSuchElementException;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -190,31 +191,14 @@ public class Elementos {
 	}
 
 	public void selecionarDestinoContaInicial2() throws InterruptedException {
-		driver.findElement(By.xpath("//form[@id='new_transference']/div[3]/div/div/a/i"));
-		WebElement menuPeriodo = driver.findElement(By.xpath("//form[@id='new_transference']/div[3]/div/div/a/i"));
-	    Actions action = new Actions(driver);
-	    action.moveToElement(menuPeriodo).perform();
-	    Thread.sleep(3000);
-	    //driver.findElement(By.linkText("Escolher período")).click();
-	    driver.findElement(By.xpath("//*[@id=\"ui-id-8\"]/a/i")).click();
-		
-	    
-		//driver.findElement(By.xpath("//form[@id='new_transference']/div[3]/div/div/a/i"));
-	    //Thread.sleep(2000);
-	    //driver.findElement(By.linkText("Conta inicial2outros")).click();	
+	    driver.findElement(By.xpath("//form[@id='new_transference']/div[3]/div/div/a/i")).click();
+	    driver.findElement(By.xpath("//div[3]/div/div/ul/li[2]/a")).click();
 	}
 
 	public void acessarCadastroDeCartoesDeCredito() throws InterruptedException {
-		driver.findElement(By.linkText("Cadastre seus cartões de crédito")).click();
+		driver.get("https://app.organizze.com.br/940649/cartao-de-credito");
 		Thread.sleep(4000);
 		driver.findElement(By.cssSelector("i.icon-plus.blue")).click();		
-	}
-
-	public void selecionarBanderia(String bandeira) throws InterruptedException {
-		Thread.sleep(2000);
-	    driver.findElement(By.cssSelector("a.current > img")).click();
-		driver.findElement(By.cssSelector("a[title=\""+ bandeira +"\"] > img")).click();
-	    driver.findElement(By.cssSelector("a.current > img")).click();
 	}
 
 	public void preencherNomeProprietarioCartao(String nomeProprietario) {
@@ -241,7 +225,7 @@ public class Elementos {
 		Thread.sleep(4000);
 	    driver.findElement(By.xpath("//form[@id='new_credit_card']/div[2]/div[5]/div/div/a/i")).click();
 	    Thread.sleep(4000);
-	    driver.findElement(By.linkText("Conta inicialoutros")).click();
+	    driver.findElement(By.xpath("//form[@id='new_credit_card']/div[2]/div[5]/div/div/a/i")).sendKeys(Keys.DOWN);    
 	}
 
 	public void executarCadastroCartaoDeCredito() {
@@ -260,8 +244,8 @@ public class Elementos {
 
 	public void preencherDataTransferencia(String dataTransferencia) {
 		driver.findElement(By.id("transaction_date")).clear();
-		driver.findElement(By.id("transaction_date")).sendKeys(dataTransferencia);	
-		driver.findElement(By.linkText(dataTransferencia.substring(0, 2))).click();
+		driver.findElement(By.id("transaction_date")).sendKeys(dataTransferencia);
+		driver.findElement(By.linkText(dataTransferencia.substring(0,2))).click();
 	}
 
 	public void executarTransferencia() {
@@ -335,6 +319,44 @@ public class Elementos {
 		} catch (NoSuchElementException e) {
 			return false;
 		}
+	}
+
+	public String buscaNomeTerceiraConta() {
+		return driver.findElement(By.xpath("//div[@id='content']/div/div/div/div[2]/ul/li[3]/div/div/div/div[2]/span")).getText();
+											
+	}								
+			
+	public boolean verificaSePossuiTerceiraConta() {
+		return isElementPresent(By.xpath("//div[@id='content']/div/div/div/div[2]/ul/li[3]/div/div/div/div[2]/span"));
+	}
+
+	public void excluirTerceiraConta() throws InterruptedException {
+		WebElement menuPeriodo = driver.findElement(By.xpath("//*[@id=\"content\"]/div/div/div/div[2]/ul/li[3]/div/div[1]/div[2]/div/a/i"));  											  
+	    Actions action = new Actions(driver);
+	    action.moveToElement(menuPeriodo).perform();
+	    action.moveToElement(menuPeriodo).click(driver.findElement(By.xpath("(//a[contains(text(),'Desativar conta')])[3]")));
+		// ERROR: Caught exception [ERROR: Unsupported command [mouseOver | //div[@id='content']/div/div/div/div[2]/ul/li[3]/div/div/div[2]/div/a/i | ]]
+	    Thread.sleep(4000);
+	    //qdriver.findElement(By.xpath("(//a[contains(text(),'Desativar conta')])[3]")).click();
+	    Thread.sleep(4000);
+	    driver.findElement(By.xpath("//div[@id='ngdialog3']/div[2]/button")).click();
+	    //Thread.sleep(4000);
+	    // ERROR: Caught exception [ERROR: Unsupported command [mouseOver | //div[@id='content']/div/div/div/div[2]/ul/li[3]/div/div/div[2]/div/a/i | ]]
+	    //driver.findElement(By.linkText("Excluir conta")).click();
+	    //Thread.sleep(4000);
+	    //driver.findElement(By.xpath("//div[@id='ngdialog4']/div[2]/div[2]/button")).click();		
+	}
+
+	public String avisoCartaoDeCreditoFoiCadastrado() {
+		return driver.findElement(By.id("flash")).getText();		
+	}
+
+	public String getSaldoPrimeiraConta() {
+		return driver.findElement(By.cssSelector("span.value.blue")).getText();
+	}
+
+	public String getSaldoSegundaConta() {
+		return driver.findElement(By.xpath("//li[2]/a/span[3]")).getText();
 	}
 		
     

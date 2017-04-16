@@ -30,6 +30,8 @@ public class TransferenciaDaContaInicialParaContaInicial2Test {
 	pagina.getPaginaLogin().executarLogin("guilhermekelling@hotmail.com","123@Trabalho");
 	Thread.sleep(4000); //Tempo para esperar carregar a página
 	pagina.acessarPaginaInicio();
+	String conta1SaldoAntesDaTransferencia = pagina.getPaginaInicio().getSaldoPrimeiraConta();
+	String conta2SaldoAntesDaTransferencia = pagina.getPaginaInicio().getSaldoSegundaConta();
 	pagina.getPaginaInicio().acessarFormularioTranferir();
 	Thread.sleep(2000);
     pagina.getPaginaInicio().selecionarOrigemContaInicial();
@@ -37,8 +39,14 @@ public class TransferenciaDaContaInicialParaContaInicial2Test {
     Thread.sleep(2000);
     pagina.getPaginaInicio().selecionarDestinoContaInicial2();    
     pagina.getPaginaInicio().preencherValorTranferencia("100,00");
-    pagina.getPaginaInicio().preencherDataTransferencia("01/04/2016");
+    pagina.getPaginaInicio().preencherDataTransferencia("10042016");
+    Thread.sleep(2000);
     pagina.getPaginaInicio().executarTransferencia();
+    Thread.sleep(4000);    
+    double saldoConta1AposTransferencia = converteParaDouble(conta1SaldoAntesDaTransferencia) - 100;
+	double saldoConta2AposTransferencia = converteParaDouble(conta2SaldoAntesDaTransferencia)+ 100;	
+	assertEquals(formataDoubleParaComparar(saldoConta1AposTransferencia), limparParaComparar(pagina.getPaginaInicio().getSaldoPrimeiraConta()));
+	assertEquals(formataDoubleParaComparar(saldoConta2AposTransferencia), limparParaComparar(pagina.getPaginaInicio().getSaldoSegundaConta()));
   }
 
   @After
@@ -48,6 +56,22 @@ public class TransferenciaDaContaInicialParaContaInicial2Test {
     if (!"".equals(verificationErrorString)) {
       fail(verificationErrorString);
     }
+  }
+  
+  private String formataValorObtidoDaPaginaParaConverterEmDouble(String valor){
+	  return valor.replace("R", "").replace("$", "").replace(" ", "").replace(".", "").replace(",",".");
+  }
+  
+  private String limparParaComparar(String valor){
+	  return valor.replace("R", "").replace("$", "").replace(" ", "").replace(".", "");
+  }
+  
+  private double converteParaDouble(String valor){
+	  return Double.parseDouble(formataValorObtidoDaPaginaParaConverterEmDouble(valor));
+  }
+  
+  private String formataDoubleParaComparar(double valor){
+	  return (String.format("%.2f", valor)).replace(".", ",");
   }
 
 }

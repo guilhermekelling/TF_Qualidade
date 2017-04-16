@@ -60,16 +60,14 @@ public class PaginaInicio {
 		elementos.acessarCadastroDeCartoesDeCredito();
 	}
 
-	public void adicionarCartaoDeCredito(String bandeira, String nomeProprietario, String diaFechamento, String diaVencimento,
+	public void adicionarCartaoDeCredito( String nomeProprietario, String diaFechamento, String diaVencimento,
 			String limite) throws InterruptedException {
-		elementos.selecionarBanderia(bandeira);
 		elementos.preencherNomeProprietarioCartao(nomeProprietario);
 		elementos.preencherDiaFechamentoCartao(diaFechamento);
 		elementos.preencherDiaVencimentoCartao(diaVencimento);
 		elementos.preencherLimiteCartao(limite);
-		elementos.selecionarContaInicialPadraoPagamentoCartao();
-		elementos.executarCadastroCartaoDeCredito();
-			
+		//elementos.selecionarContaInicialPadraoPagamentoCartao();
+		elementos.executarCadastroCartaoDeCredito();	
 		}
 
 	public String getNomeProprietarioCartao() {
@@ -98,6 +96,18 @@ public class PaginaInicio {
 
 	public void removerPrimeiraReceitaDaPagina() throws InterruptedException {
 		elementos.removerPrimeiraReceitaDaPagina();		
+	}
+
+	public String avisoCartaoDeCreditoFoiCadastrado() {
+		return elementos.avisoCartaoDeCreditoFoiCadastrado();
+	}
+
+	public String getSaldoPrimeiraConta() {
+		return elementos.getSaldoPrimeiraConta();
+	}
+
+	public String getSaldoSegundaConta() {
+		return elementos.getSaldoSegundaConta();
 	}
 
 }
