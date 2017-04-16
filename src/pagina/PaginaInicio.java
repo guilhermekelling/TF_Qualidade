@@ -1,5 +1,6 @@
 package pagina;
 
+
 public class PaginaInicio {
 	private Driver driver;
 	private Elementos elementos = new Elementos();

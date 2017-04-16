@@ -26,12 +26,12 @@
 
     <target name="compile-src" depends="clean">
         <mkdir dir="${classes.dir}"/>
-        <javac srcdir="${src.dir}" destdir="${classes.dir}" classpathref="classpath.base"  encoding="utf-8" includeantruntime="true"/>
+        <javac srcdir="${src.dir}" destdir="${classes.dir}" classpathref="classpath.base" includeantruntime="true"/>
     </target>
     
     <target name="compile-test" depends="compile-src">
         <mkdir dir="${classes.dir}"/>
-        <javac srcdir="${test.dir}" destdir="${classes.dir}" classpathref="classpath.test" encoding="utf-8" includeantruntime="true"/>
+        <javac srcdir="${test.dir}" destdir="${classes.dir}" classpathref="classpath.test" includeantruntime="true"/>
     </target>
 
 

@@ -1,5 +1,6 @@
 package testesPagina;
 
+
 import org.junit.*;
 
 import static org.junit.Assert.*;
@@ -20,7 +21,7 @@ public class LoginTest {
 	pagina.setBaseUrl("https://app.organizze.com.br");
     pagina.acessarPaginaLogin();
     pagina.getPaginaLogin().executarLogin("guilhermekelling@hotmail.com","123@Trabalho");
-    Thread.sleep(2000); //Tempo para esperar carregar a página
+    Thread.sleep(2000); //Tempo para esperar carregar a pï¿½gina
     String caminhoFinalEnderecoPagina = pagina.getCurrentUrl().substring(pagina.getCurrentUrl().length()-"inicio".length(), pagina.getCurrentUrl().length());
     assertEquals("inicio", caminhoFinalEnderecoPagina);
   }

@@ -1,7 +1,6 @@
 package testesPagina;
 
 
-
 import java.util.regex.Pattern;
 import java.util.concurrent.TimeUnit;
 import org.junit.*;
@@ -35,7 +34,7 @@ public class AdicionarReceitaNaContaInicialTest {
 	pagina.setBaseUrl("https://app.organizze.com.br");
 	pagina.acessarPaginaLogin();
 	pagina.getPaginaLogin().executarLogin("guilhermekelling@hotmail.com","123@Trabalho");
-	Thread.sleep(5000); //Tempo para esperar carregar a página
+	Thread.sleep(5000); //Tempo para esperar carregar a pï¿½gina
 	pagina.acessarPaginaInicio();
 	String saldoTotal = pagina.getPaginaInicio().getSaldoTotalPaginaInicio();
 	String saldoContaInicial = pagina.getPaginaInicio().getSaldoContaInicialPaginaInicio();
@@ -56,7 +55,7 @@ public class AdicionarReceitaNaContaInicialTest {
 	pagina.setBaseUrl("https://app.organizze.com.br");
 	pagina.acessarPaginaLogin();
 	pagina.getPaginaLogin().executarLogin("guilhermekelling@hotmail.com","123@Trabalho");
-	Thread.sleep(4000); //Tempo para esperar carregar a página
+	Thread.sleep(4000); //Tempo para esperar carregar a pï¿½gina
 	pagina.acessarPaginaLancamentos();
 	Thread.sleep(4000);
 	pagina.getPaginaLancamentos().filtrarPeriodoLancamentos("22032017", "22032017");
@@ -72,7 +71,7 @@ public class AdicionarReceitaNaContaInicialTest {
 	pagina.setBaseUrl("https://app.organizze.com.br");
 	pagina.acessarPaginaLogin();
 	pagina.getPaginaLogin().executarLogin("guilhermekelling@hotmail.com","123@Trabalho");
-	Thread.sleep(4000); //Tempo para esperar carregar a página
+	Thread.sleep(4000); //Tempo para esperar carregar a pï¿½gina
 	pagina.acessarPaginaLancamentos();
 	Thread.sleep(4000);
 	pagina.getPaginaLancamentos().filtrarPeriodoLancamentos("22032017", "22032017");
@@ -81,7 +80,7 @@ public class AdicionarReceitaNaContaInicialTest {
 	Thread.sleep(4000);
 	pagina.getPaginaLancamentos().removerPrimerioLancamentoExibido();
 	Thread.sleep(4000);
-	assertEquals("Nenhuma movimentação no filtro selecionado", pagina.getPaginaLancamentos().verificarSeNaoExibeNenhumLancamento());  
+	assertEquals("Nenhuma movimentaï¿½ï¿½o no filtro selecionado", pagina.getPaginaLancamentos().verificarSeNaoExibeNenhumLancamento());  
   }
   
   @After

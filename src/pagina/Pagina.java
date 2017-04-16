@@ -1,5 +1,6 @@
 package pagina;
 
+
 public class Pagina {
 	private Driver driver;
 	private String baseUrl;

@@ -1,5 +1,6 @@
 package testesPagina;
 
+
 import java.util.regex.Pattern;
 import java.util.concurrent.TimeUnit;
 import org.junit.*;
@@ -28,7 +29,7 @@ public class TransferenciaDaContaInicialParaContaInicial2Test {
 	pagina.setBaseUrl("https://app.organizze.com.br");
 	pagina.acessarPaginaLogin();
 	pagina.getPaginaLogin().executarLogin("guilhermekelling@hotmail.com","123@Trabalho");
-	Thread.sleep(4000); //Tempo para esperar carregar a página
+	Thread.sleep(4000); //Tempo para esperar carregar a pï¿½gina
 	pagina.acessarPaginaInicio();
 	String conta1SaldoAntesDaTransferencia = pagina.getPaginaInicio().getSaldoPrimeiraConta();
 	String conta2SaldoAntesDaTransferencia = pagina.getPaginaInicio().getSaldoSegundaConta();

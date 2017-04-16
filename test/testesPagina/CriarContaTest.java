@@ -1,5 +1,6 @@
 package testesPagina;
 
+
 import org.junit.*;
 import static org.junit.Assert.*;
 import pagina.Pagina;
@@ -22,7 +23,7 @@ public class CriarContaTest {
 	pagina.setBaseUrl("https://app.organizze.com.br");
 	pagina.acessarPaginaLogin();
 	pagina.getPaginaLogin().executarLogin("guilhermekelling@hotmail.com","123@Trabalho");
-	Thread.sleep(4000); //Tempo para esperar carregar a página
+	Thread.sleep(4000); //Tempo para esperar carregar a pï¿½gina
     pagina.acessarPaginaContas();
     pagina.getPaginaConta().criarConta("Conta1001", "Conta corrente", "100,00");
     Thread.sleep(8000);
@@ -35,7 +36,7 @@ public class CriarContaTest {
 	pagina.setBaseUrl("https://app.organizze.com.br");
 	pagina.acessarPaginaLogin();
 	pagina.getPaginaLogin().executarLogin("guilhermekelling@hotmail.com","123@Trabalho");
-	Thread.sleep(2000); //Tempo para esperar carregar a página
+	Thread.sleep(2000); //Tempo para esperar carregar a pï¿½gina
     pagina.acessarPaginaContas();
     Thread.sleep(4000);
     if(pagina.getPaginaConta().verificaSePossuiTerceiraConta()){

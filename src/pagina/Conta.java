@@ -1,5 +1,6 @@
 package pagina;
 
+
 public class Conta {
 	private String nome;
 	private String tipo;

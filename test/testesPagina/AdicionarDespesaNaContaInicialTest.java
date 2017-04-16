@@ -1,5 +1,6 @@
 package testesPagina;
 
+
 import org.junit.*;
 import static org.junit.Assert.*;
 import pagina.Pagina;
@@ -22,14 +23,14 @@ public class AdicionarDespesaNaContaInicialTest {
 	  pagina.setBaseUrl("https://app.organizze.com.br");
 	  pagina.acessarPaginaLogin();
 	  pagina.getPaginaLogin().executarLogin("guilhermekelling@hotmail.com","123@Trabalho");
-	  Thread.sleep(2000); //Tempo para esperar carregar a página
+	  Thread.sleep(2000); //Tempo para esperar carregar a pï¿½gina
 	  pagina.acessarPaginaLancamentos();
-	  Thread.sleep(2000); //Tempo para esperar carregar a página
+	  Thread.sleep(2000); //Tempo para esperar carregar a pï¿½gina
 	  pagina.getPaginaLancamentos().acessarFormularioAdicionarLancamento();
 	  Thread.sleep(2000);
 	  pagina.getPaginaLancamentos().lancar(nomeDaDespesa, "10,00", "22032017", "Conta inicial", "Lazer");
-	  Thread.sleep(6000); //Tempo para esperar carregar a página
-	  assertEquals("Movimentação adicionada!", pagina.getPaginaLancamentos().verificaSeLancamentoFoiAdicionado());
+	  Thread.sleep(6000); //Tempo para esperar carregar a pï¿½gina
+	  assertEquals("Movimentaï¿½ï¿½o adicionada!", pagina.getPaginaLancamentos().verificaSeLancamentoFoiAdicionado());
   }
   
   @Test
@@ -38,13 +39,13 @@ public class AdicionarDespesaNaContaInicialTest {
 	  pagina.setBaseUrl("https://app.organizze.com.br");
 	  pagina.acessarPaginaLogin();
 	  pagina.getPaginaLogin().executarLogin("guilhermekelling@hotmail.com","123@Trabalho");
-	  Thread.sleep(2000); //Tempo para esperar carregar a página
+	  Thread.sleep(2000); //Tempo para esperar carregar a pï¿½gina
 	  pagina.acessarPaginaLancamentos();
-	  Thread.sleep(4000); //Tempo para esperar carregar a página
+	  Thread.sleep(4000); //Tempo para esperar carregar a pï¿½gina
 	  pagina.getPaginaLancamentos().filtrarPeriodoLancamentos("22032017", "22032017");
 	  Thread.sleep(3000);
 	  pagina.getPaginaLancamentos().pesquisarLancamento(nomeDaDespesa);
-	  Thread.sleep(2000); //Tempo para esperar carregar a página
+	  Thread.sleep(2000); //Tempo para esperar carregar a pï¿½gina
       assertEquals(nomeDaDespesa, pagina.getPaginaLancamentos().getNomePrimeiroLancamentoDoResultadoDaPesquisa());
       assertEquals("22/03", pagina.getPaginaLancamentos().getDataPrimeiroLancamentoDoResultadoDaPesquisa());
       assertEquals("Lazer", pagina.getPaginaLancamentos().getCategoriaPrimeiroLancamentoDoResultadoDaPesquisa());
@@ -56,20 +57,20 @@ public class AdicionarDespesaNaContaInicialTest {
 	  pagina.setBaseUrl("https://app.organizze.com.br");
 	  pagina.acessarPaginaLogin();
 	  pagina.getPaginaLogin().executarLogin("guilhermekelling@hotmail.com","123@Trabalho");
-	  Thread.sleep(2000); //Tempo para esperar carregar a página
+	  Thread.sleep(2000); //Tempo para esperar carregar a pï¿½gina
 	  pagina.acessarPaginaLancamentos();
-	  Thread.sleep(6000); //Tempo para esperar carregar a página
+	  Thread.sleep(6000); //Tempo para esperar carregar a pï¿½gina
 	  pagina.getPaginaLancamentos().filtrarPeriodoLancamentos("22032017", "22032017");
 	  Thread.sleep(3000);
 	  pagina.getPaginaLancamentos().pesquisarLancamento(nomeDaDespesa);
-	  Thread.sleep(2000); //Tempo para esperar carregar a página
+	  Thread.sleep(2000); //Tempo para esperar carregar a pï¿½gina
       assertEquals(nomeDaDespesa, pagina.getPaginaLancamentos().getNomePrimeiroLancamentoDoResultadoDaPesquisa());
       Thread.sleep(2000);
       pagina.getPaginaLancamentos().acessarPrimeriaDespesaDaPesquisa();
       Thread.sleep(2000);
       pagina.getPaginaLancamentos().removerPrimerioLancamentoExibido();
       Thread.sleep(2000); 
-	  assertEquals("Nenhuma movimentação no filtro selecionado", pagina.getPaginaLancamentos().verificaSeLancamentoFoiDeletado());
+	  assertEquals("Nenhuma movimentaï¿½ï¿½o no filtro selecionado", pagina.getPaginaLancamentos().verificaSeLancamentoFoiDeletado());
   }
   
   @After

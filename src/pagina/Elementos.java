@@ -222,7 +222,7 @@ public class Elementos {
 	}
 
 	public void selecionarContaInicialPadraoPagamentoCartao() throws InterruptedException {
-		driver.findElement(By.linkText("+ conta padrão de pagamento")).click();
+		driver.findElement(By.linkText("+ conta padrï¿½o de pagamento")).click();
 		Thread.sleep(4000);
 	    driver.findElement(By.xpath("//form[@id='new_credit_card']/div[2]/div[5]/div/div/a/i")).click();
 	    Thread.sleep(4000);
@@ -277,7 +277,7 @@ public class Elementos {
 	public void acessarLancamentosDaContaInicial() throws InterruptedException {
 		driver.findElement(By.cssSelector("big.name")).click();	
 		Thread.sleep(4000);
-		driver.findElement(By.linkText("ver mais lançamentos")).click();
+		driver.findElement(By.linkText("ver mais lanï¿½amentos")).click();
 	}
 
 	public void pesquisarReceita(String nomeDaReceita) throws InterruptedException {
@@ -341,8 +341,7 @@ public class Elementos {
         WebElement subElement = driver.findElement(By.linkText("//*[@id=\"content\"]/div/div/div/div[2]/ul/li[3]/div/div[1]/div[2]/div/div/ul/li[4]/a"));
         action.moveToElement(subElement);
         action.click();
-        action.perform();
-	    
+        action.perform();	    
 	}
 
 	public String avisoCartaoDeCreditoFoiCadastrado() {
@@ -355,7 +354,6 @@ public class Elementos {
 
 	public String getSaldoSegundaConta() {
 		return driver.findElement(By.xpath("//li[2]/a/span[3]")).getText();
-	}
-		
+	}		
     
 }

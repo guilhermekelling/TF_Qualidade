@@ -1,5 +1,6 @@
 package testesPagina;
 
+
 import java.util.regex.Pattern;
 import java.util.concurrent.TimeUnit;
 import org.junit.*;
@@ -25,13 +26,13 @@ public class CadastroCartaoDeCreditoTest {
 	pagina.setBaseUrl("https://app.organizze.com.br");
 	pagina.acessarPaginaLogin();
 	pagina.getPaginaLogin().executarLogin("guilhermekelling@hotmail.com","123@Trabalho");
-	Thread.sleep(2000); //Tempo para esperar carregar a página
+	Thread.sleep(2000); //Tempo para esperar carregar a pï¿½gina
 	pagina.acessarPaginaInicio();
 	pagina.getPaginaInicio().acessarCadastroDeCartoesDeCredito();
 	Thread.sleep(2000);
 	pagina.getPaginaInicio().adicionarCartaoDeCredito("Guilherme Kelling","27","10","800,00");
 	Thread.sleep(3000);
-	assertEquals("Cartão criado", pagina.getPaginaInicio().avisoCartaoDeCreditoFoiCadastrado());
+	assertEquals("Cartï¿½o criado", pagina.getPaginaInicio().avisoCartaoDeCreditoFoiCadastrado());
   }
 
   @After
