@@ -15,7 +15,7 @@ public class LoginTest {
   public void setUp() throws Exception {
   }
   
-//@Test
+@Test
   public void testLoginComEmaileSenhaCorreta() throws Exception {
 	pagina.tempoParaEncontrarElementoEmSegundos(30);
 	pagina.setBaseUrl("https://app.organizze.com.br");
@@ -26,7 +26,7 @@ public class LoginTest {
     assertEquals("inicio", caminhoFinalEnderecoPagina);
   }
 
-//@Test
+@Test
 public void testLoginComSenhaIncorreta() throws Exception {
 	pagina.tempoParaEncontrarElementoEmSegundos(30);
 	pagina.setBaseUrl("https://www.organizze.com.br");
@@ -39,7 +39,7 @@ public void testLoginComSenhaIncorreta() throws Exception {
 	assertTrue(pagina.getPaginaLogin().verificaErroLogin());
 }
 
-//@Test
+@Test
 public void testLoginComEmailIncorreta() throws Exception {
 	pagina.tempoParaEncontrarElementoEmSegundos(30);
 	pagina.setBaseUrl("https://app.organizze.com.br");

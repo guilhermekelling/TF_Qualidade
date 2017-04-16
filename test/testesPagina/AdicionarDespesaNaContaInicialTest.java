@@ -17,7 +17,7 @@ public class AdicionarDespesaNaContaInicialTest {
   public void setUp() throws Exception {
   }
 
-  //@Test
+  @Test
   public void firstTestAdicionarDespesaNaContaInicialEPesquisarDespesaParaValidar() throws Exception {
 	  pagina.tempoParaEncontrarElementoEmSegundos(30);
 	  pagina.setBaseUrl("https://app.organizze.com.br");
@@ -33,7 +33,7 @@ public class AdicionarDespesaNaContaInicialTest {
 	  assertEquals("Movimentação adicionada!", pagina.getPaginaLancamentos().verificaSeLancamentoFoiAdicionado());
   }
   
-  //@Test
+  @Test
   public void secondTestPesquisarDespesaAdicionadaNaContaInicialEPesquisarDespesaParaValidar() throws Exception {
 	  pagina.tempoParaEncontrarElementoEmSegundos(30);
 	  pagina.setBaseUrl("https://app.organizze.com.br");
@@ -51,7 +51,7 @@ public class AdicionarDespesaNaContaInicialTest {
       assertEquals("Lazer", pagina.getPaginaLancamentos().getCategoriaPrimeiroLancamentoDoResultadoDaPesquisa());
   }
   
- // @Test
+  @Test
   public void thirdTestDeletarDespesaAdicionadaNaContaInicialEPesquisarDespesaParaValidar() throws Exception {
 	  pagina.tempoParaEncontrarElementoEmSegundos(30);
 	  pagina.setBaseUrl("https://app.organizze.com.br");

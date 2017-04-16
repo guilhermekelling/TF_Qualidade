@@ -17,7 +17,7 @@ public class CriarContaTest {
   public void setUp() throws Exception {
   }
 
- //@Test
+ @Test
   public void firstTestCriaConta() throws Exception {
 	pagina.tempoParaEncontrarElementoEmSegundos(30);
 	pagina.setBaseUrl("https://app.organizze.com.br");

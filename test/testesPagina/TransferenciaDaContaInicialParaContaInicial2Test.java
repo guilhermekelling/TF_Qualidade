@@ -23,7 +23,7 @@ public class TransferenciaDaContaInicialParaContaInicial2Test {
 	  
   }
 
-  //@Test
+  @Test
   public void testTransferenciaDaContaInicialParaContaInicial2() throws Exception {
 	pagina.tempoParaEncontrarElementoEmSegundos(30);
 	pagina.setBaseUrl("https://app.organizze.com.br");
