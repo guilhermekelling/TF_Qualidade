@@ -20,7 +20,7 @@ public class CadastroCartaoDeCreditoTest {
   public void setUp() throws Exception {
   }
 
-  @Test
+  //@Test
   public void testECadastroCartaoDeCredito() throws Exception {
 	pagina.tempoParaEncontrarElementoEmSegundos(30);
 	pagina.setBaseUrl("https://app.organizze.com.br");
