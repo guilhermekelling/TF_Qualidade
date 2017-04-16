@@ -222,7 +222,7 @@ public class Elementos {
 	}
 
 	public void selecionarContaInicialPadraoPagamentoCartao() throws InterruptedException {
-		driver.findElement(By.linkText("+ conta padr�o de pagamento")).click();
+		driver.findElement(By.linkText("+ conta padrão de pagamento")).click();
 		Thread.sleep(4000);
 	    driver.findElement(By.xpath("//form[@id='new_credit_card']/div[2]/div[5]/div/div/a/i")).click();
 	    Thread.sleep(4000);
@@ -277,7 +277,7 @@ public class Elementos {
 	public void acessarLancamentosDaContaInicial() throws InterruptedException {
 		driver.findElement(By.cssSelector("big.name")).click();	
 		Thread.sleep(4000);
-		driver.findElement(By.linkText("ver mais lan�amentos")).click();
+		driver.findElement(By.linkText("ver mais lançamentos")).click();
 	}
 
 	public void pesquisarReceita(String nomeDaReceita) throws InterruptedException {

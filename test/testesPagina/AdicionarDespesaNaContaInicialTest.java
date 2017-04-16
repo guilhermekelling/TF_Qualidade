@@ -30,7 +30,7 @@ public class AdicionarDespesaNaContaInicialTest {
 	  Thread.sleep(2000);
 	  pagina.getPaginaLancamentos().lancar(nomeDaDespesa, "10,00", "22032017", "Conta inicial", "Lazer");
 	  Thread.sleep(6000); //Tempo para esperar carregar a p�gina
-	  assertEquals("Movimenta��o adicionada!", pagina.getPaginaLancamentos().verificaSeLancamentoFoiAdicionado());
+	  assertEquals("Movimentação adicionada!", pagina.getPaginaLancamentos().verificaSeLancamentoFoiAdicionado());
   }
   
   @Test
@@ -70,7 +70,7 @@ public class AdicionarDespesaNaContaInicialTest {
       Thread.sleep(2000);
       pagina.getPaginaLancamentos().removerPrimerioLancamentoExibido();
       Thread.sleep(2000); 
-	  assertEquals("Nenhuma movimenta��o no filtro selecionado", pagina.getPaginaLancamentos().verificaSeLancamentoFoiDeletado());
+	  assertEquals("Nenhuma movimentação no filtro selecionado", pagina.getPaginaLancamentos().verificaSeLancamentoFoiDeletado());
   }
   
   @After

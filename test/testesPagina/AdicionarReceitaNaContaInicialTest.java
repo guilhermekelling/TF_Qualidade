@@ -80,7 +80,7 @@ public class AdicionarReceitaNaContaInicialTest {
 	Thread.sleep(4000);
 	pagina.getPaginaLancamentos().removerPrimerioLancamentoExibido();
 	Thread.sleep(4000);
-	assertEquals("Nenhuma movimenta��o no filtro selecionado", pagina.getPaginaLancamentos().verificarSeNaoExibeNenhumLancamento());  
+	assertEquals("Nenhuma movimentação no filtro selecionado", pagina.getPaginaLancamentos().verificarSeNaoExibeNenhumLancamento());  
   }
   
   @After
