@@ -262,11 +262,11 @@ public class Elementos {
 	}
 
 	public void removerPrimerioLancamentoExibido() throws InterruptedException {
-		driver.findElement(By.cssSelector("span.full-description.ng-binding")).click();
-		Thread.sleep(4000);
+		//driver.findElement(By.cssSelector("span.full-description.ng-binding")).click();
+		//Thread.sleep(5000);
 		driver.findElement(By.cssSelector("a.remove")).click();
-	    Thread.sleep(4000);
-	    driver.findElement(By.cssSelector("button.button.button-red")).click();		
+	    Thread.sleep(5000);
+		driver.findElement(By.cssSelector("button.button.button-red")).click();		    
 	}
 	
 

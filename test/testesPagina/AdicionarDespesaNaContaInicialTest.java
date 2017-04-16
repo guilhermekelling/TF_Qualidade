@@ -65,11 +65,11 @@ public class AdicionarDespesaNaContaInicialTest {
 	  pagina.getPaginaLancamentos().pesquisarLancamento(nomeDaDespesa);
 	  Thread.sleep(2000); //Tempo para esperar carregar a p�gina
       assertEquals(nomeDaDespesa, pagina.getPaginaLancamentos().getNomePrimeiroLancamentoDoResultadoDaPesquisa());
-      Thread.sleep(2000);
+      Thread.sleep(3000);
       pagina.getPaginaLancamentos().acessarPrimeriaDespesaDaPesquisa();
-      Thread.sleep(2000);
+      Thread.sleep(5000);
       pagina.getPaginaLancamentos().removerPrimerioLancamentoExibido();
-      Thread.sleep(2000); 
+      Thread.sleep(3000); 
 	  assertEquals("Nenhuma movimentação no filtro selecionado", pagina.getPaginaLancamentos().verificaSeLancamentoFoiDeletado());
   }
   

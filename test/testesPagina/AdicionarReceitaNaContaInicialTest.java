@@ -78,6 +78,8 @@ public class AdicionarReceitaNaContaInicialTest {
 	Thread.sleep(4000);
 	pagina.getPaginaLancamentos().pesquisarLancamento(nomeDaReceita);
 	Thread.sleep(4000);
+	pagina.getPaginaLancamentos().acessarPrimeriaDespesaDaPesquisa();
+	Thread.sleep(4000);
 	pagina.getPaginaLancamentos().removerPrimerioLancamentoExibido();
 	Thread.sleep(4000);
 	assertEquals("Nenhuma movimentação no filtro selecionado", pagina.getPaginaLancamentos().verificarSeNaoExibeNenhumLancamento());  
