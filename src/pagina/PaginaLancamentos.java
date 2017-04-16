@@ -57,7 +57,7 @@ public class PaginaLancamentos {
 		return elementos.getValorPrimeiroLancamentoDoResultadoDaPesquisa();
 	}
 
-	public String verificaSeLancamentoFoiAdicionado() {
+	public boolean verificaSeLancamentoFoiAdicionado() {
 		return elementos.verificaSeLancamentoFoiAdicionado();
 	}
 
@@ -70,11 +70,11 @@ public class PaginaLancamentos {
 		
 	}
 
-	public String verificaSeLancamentoFoiDeletado() {
+	public boolean verificaSeLancamentoFoiDeletado() {
 		return elementos.verificaSeLancamentoFoiDeletado();
 	}	
 	
-	public String verificarSeNaoExibeNenhumLancamento() {
+	public boolean verificarSeNaoExibeNenhumLancamento() {
 		return elementos.verificarSeNaoExibeNenhumLancamento();		
 	}
 }

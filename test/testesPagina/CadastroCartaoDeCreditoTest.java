@@ -32,7 +32,7 @@ public class CadastroCartaoDeCreditoTest {
 	Thread.sleep(2000);
 	pagina.getPaginaInicio().adicionarCartaoDeCredito("Guilherme Kelling","27","10","800,00");
 	Thread.sleep(3000);
-	assertEquals("Cartão criado", pagina.getPaginaInicio().avisoCartaoDeCreditoFoiCadastrado());
+	assertTrue(pagina.getPaginaInicio().avisoCartaoDeCreditoFoiCadastrado());
   }
 
   @After

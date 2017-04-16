@@ -99,7 +99,7 @@ public class PaginaInicio {
 		elementos.removerPrimeiraReceitaDaPagina();		
 	}
 
-	public String avisoCartaoDeCreditoFoiCadastrado() {
+	public boolean avisoCartaoDeCreditoFoiCadastrado() {
 		return elementos.avisoCartaoDeCreditoFoiCadastrado();
 	}
 

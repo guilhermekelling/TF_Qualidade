@@ -253,8 +253,8 @@ public class Elementos {
 		driver.findElement(By.cssSelector("button.button.button-blue")).click();		
 	}
 
-	public String verificaSeLancamentoFoiAdicionado() {
-		return driver.findElement(By.cssSelector("p")).getText();
+	public boolean verificaSeLancamentoFoiAdicionado() {
+		return isElementPresent(By.cssSelector("p"));
 	}
 
 	public void acessarPrimeriaDespesaDaPesquisa() {
@@ -270,8 +270,8 @@ public class Elementos {
 	}
 	
 
-	public String verificaSeLancamentoFoiDeletado() {
-		return driver.findElement(By.cssSelector("div.ng-scope > h3")).getText();
+	public boolean verificaSeLancamentoFoiDeletado() {
+		return isElementPresent(By.xpath("//div[@id='transactions-table']/table/tbody/tr/td/div/div/i"));
 	}
 
 	public void acessarLancamentosDaContaInicial() throws InterruptedException {
@@ -300,9 +300,8 @@ public class Elementos {
 	    Thread.sleep(4000);
 	}
 
-	public String verificarSeNaoExibeNenhumLancamento() {
-		// TODO Auto-generated method stub
-		return driver.findElement(By.cssSelector("div.ng-scope > h3")).getText();
+	public boolean verificarSeNaoExibeNenhumLancamento() {
+		return isElementPresent(By.xpath("//div[@id='transactions-table']/table/tbody/tr/td/div/div/i"));
 	}
 
 	public String getNomeDaPrimeiraReceita() {
@@ -344,8 +343,8 @@ public class Elementos {
         action.perform();	    
 	}
 
-	public String avisoCartaoDeCreditoFoiCadastrado() {
-		return driver.findElement(By.id("flash")).getText();		
+	public boolean avisoCartaoDeCreditoFoiCadastrado() {
+		return isElementPresent((By.id("flash")));		
 	}
 
 	public String getSaldoPrimeiraConta() {
