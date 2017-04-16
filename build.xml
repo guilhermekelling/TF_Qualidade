@@ -6,7 +6,6 @@
     <property name="classes.dir" value="${build.dir}/classes"/>
     <property name="jar.dir"     value="${build.dir}/jar"/>
     <property name="lib.dir"     value="libs"/>
-	<property name="javac.encoding" value="utf-8" />
 
     <path id="classpath.base">
         <fileset dir="${lib.dir}" includes="**/*.jar"/>
@@ -27,12 +26,12 @@
 
     <target name="compile-src" depends="clean">
         <mkdir dir="${classes.dir}"/>
-        <javac srcdir="${src.dir}" destdir="${classes.dir}" classpathref="classpath.base"  includeantruntime="true"/>
+        <javac srcdir="${src.dir}" destdir="${classes.dir}" classpathref="classpath.base"  encoding="utf-8" includeantruntime="true"/>
     </target>
     
     <target name="compile-test" depends="compile-src">
         <mkdir dir="${classes.dir}"/>
-        <javac srcdir="${test.dir}" destdir="${classes.dir}" classpathref="classpath.test"  includeantruntime="true"/>
+        <javac srcdir="${test.dir}" destdir="${classes.dir}" classpathref="classpath.test" encoding="utf-8" includeantruntime="true"/>
     </target>
 
 
