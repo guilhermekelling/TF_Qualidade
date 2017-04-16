@@ -9,6 +9,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 
 public class Elementos {
@@ -330,21 +331,18 @@ public class Elementos {
 		return isElementPresent(By.xpath("//div[@id='content']/div/div/div/div[2]/ul/li[3]/div/div/div/div[2]/span"));
 	}
 
-	public void excluirTerceiraConta() throws InterruptedException {
-		WebElement menuPeriodo = driver.findElement(By.xpath("//*[@id=\"content\"]/div/div/div/div[2]/ul/li[3]/div/div[1]/div[2]/div/a/i"));  											  
-	    Actions action = new Actions(driver);
-	    action.moveToElement(menuPeriodo).perform();
-	    action.moveToElement(menuPeriodo).click(driver.findElement(By.xpath("(//a[contains(text(),'Desativar conta')])[3]")));
-		// ERROR: Caught exception [ERROR: Unsupported command [mouseOver | //div[@id='content']/div/div/div/div[2]/ul/li[3]/div/div/div[2]/div/a/i | ]]
-	    Thread.sleep(4000);
-	    //qdriver.findElement(By.xpath("(//a[contains(text(),'Desativar conta')])[3]")).click();
-	    Thread.sleep(4000);
-	    driver.findElement(By.xpath("//div[@id='ngdialog3']/div[2]/button")).click();
-	    //Thread.sleep(4000);
-	    // ERROR: Caught exception [ERROR: Unsupported command [mouseOver | //div[@id='content']/div/div/div/div[2]/ul/li[3]/div/div/div[2]/div/a/i | ]]
-	    //driver.findElement(By.linkText("Excluir conta")).click();
-	    //Thread.sleep(4000);
-	    //driver.findElement(By.xpath("//div[@id='ngdialog4']/div[2]/div[2]/button")).click();		
+	public void excluirTerceiraConta() throws InterruptedException {       
+        WebElement element = driver.findElement(By.xpath("//*[@id=\"content\"]/div/div/div/div[2]/ul/li[3]/div/div[1]/div[2]/div")); 
+        
+        Thread.sleep(4000);
+        Actions action = new Actions(driver);
+        action.moveToElement(element).perform(); 
+        Thread.sleep(4000);
+        WebElement subElement = driver.findElement(By.linkText("//*[@id=\"content\"]/div/div/div/div[2]/ul/li[3]/div/div[1]/div[2]/div/div/ul/li[4]/a"));
+        action.moveToElement(subElement);
+        action.click();
+        action.perform();
+	    
 	}
 
 	public String avisoCartaoDeCreditoFoiCadastrado() {
